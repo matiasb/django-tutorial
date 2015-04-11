@@ -20,4 +20,4 @@ place: read this material to quickly get up and running.
    intro/index
 
 
-Original documentation: https://www.docs.djangoproject.com/
+Full documentation: https://www.docs.djangoproject.com/
