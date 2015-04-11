@@ -1,0 +1,43 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Django tutorial 1.8\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-11 17:36-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../index.txt:4
+msgid "Django"
+msgstr ""
+
+#: ../../index.txt:6
+msgid ""
+"Django is a high-level Python Web framework that encourages rapid "
+"development and clean, pragmatic design. Built by experienced developers, it"
+" takes care of much of the hassle of Web development, so you can focus on "
+"writing your app without needing to reinvent the wheel. It’s free and open "
+"source."
+msgstr ""
+
+#: ../../index.txt:8
+msgid "Django website: https://www.djangoproject.com/"
+msgstr ""
+
+#: ../../index.txt:12
+msgid "Tutorial"
+msgstr ""
+
+#: ../../index.txt:14
+msgid ""
+"New to Django? Or to Web development in general? Well, you came to the right"
+" place: read this material to quickly get up and running."
+msgstr ""
+
+#: ../../index.txt:23
+msgid "Full documentation: https://www.docs.djangoproject.com/"
+msgstr ""
