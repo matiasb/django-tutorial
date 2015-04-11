@@ -2,7 +2,7 @@
 #
 
 # You can set these variables from the command line.
-DJANGO_VERSION ?= 1.7.x
+DJANGO_VERSION ?= 1.8.x
 PYTHON         ?= python
 SPHINXOPTS     ?=
 SPHINXBUILD    ?= sphinx-build

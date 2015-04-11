@@ -3,8 +3,10 @@
 import os
 import re
 
+from conf import DJANGO_VERSION
 
-BASE_URL = 'https://docs.djangoproject.com/en/1.7'
+version = DJANGO_VERSION.encode('ascii')
+BASE_URL = 'https://docs.djangoproject.com/en/%s' % version
 DOCS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), 'intro'))
 RE_INTERNAL_LINK = re.compile(r':doc:`(.*?)\s*(?:<(.*?)>)?`', re.DOTALL)
 RE_REFERENCE_LINK = re.compile(r':ref:`(.*?)\s*(?:<(.*?)>)?`', re.DOTALL)
@@ -46,6 +48,9 @@ REFERENCES = {
     'troubleshooting-django-admin-py': (
         'Problems running django-admin.py',
         '/faq/troubleshooting/#troubleshooting-django-admin-py'),
+    'troubleshooting-django-admin': (
+        'Problems running django-admin.py',
+        '/faq/troubleshooting/#troubleshooting-django-admin-py'),
     'third-party-notes': (
         'also available',
         '/ref/databases/#third-party-notes'),
@@ -58,6 +63,13 @@ REFERENCES = {
     'topics-testing-code-coverage': (
         'integration with coverage.py',
         '/topics/testing/advanced/#topics-testing-code-coverage'),
+    'tutorial04-amend-views': (
+        '', ':ref:`Tutorial 4 <tutorial04-amend-views>`'),
+    'ref-customizing-your-projects-templates': (
+        '', ':ref:`Tutorial 2 <ref-customizing-your-projects-templates>`'),
+    'template-loading': (
+        'template loading documentation',
+        '/topics/templates/#template-loading'),
 }
 
 
@@ -84,9 +96,15 @@ def update_reference_link(match):
 
     ref = REFERENCES.get(href)
     if ref is not None:
-        label = ref[0] if label == href else label
-        return '`%s <%s%s>`_' % (label, BASE_URL, ref[1])
+        if not ref[0]:
+            # reference replace
+            return ref[1]
+        else:
+            # set up reference link
+            label = ref[0] if label == href else label
+            return '`%s <%s%s>`_' % (label, BASE_URL, ref[1])
     else:
+        print "Missing reference: %s (%s)" % (label, href)
         return label
 
 
@@ -98,6 +116,7 @@ for doc_file in os.listdir(DOCS_DIR):
     with open(filename, 'r') as doc:
         data = doc.read()
 
+    print "Processing file:", doc_file
     data = RE_INTERNAL_LINK.sub(update_internal_link, data)
     data = RE_REFERENCE_LINK.sub(update_reference_link, data)
 
