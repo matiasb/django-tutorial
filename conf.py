@@ -65,7 +65,7 @@ source_suffix = '.txt'
 master_doc = 'index'
 
 # General substitutions.
-project = 'Django tutorial'
+project = 'Django | tutorial'
 copyright = 'Django Software Foundation and contributors'
 
 

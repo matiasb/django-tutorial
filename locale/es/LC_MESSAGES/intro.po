@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Django tutorial 1.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-11 17:36-0300\n"
-"PO-Revision-Date: 2015-04-11 20:30-0300\n"
+"PO-Revision-Date: 2015-04-12 13:59-0300\n"
 "Last-Translator: Matías Bordese <mbordese@gmail.com>\n"
 "Language: Spanish\n"
 "Language-Team: Spanish <es>\n"
@@ -2313,6 +2313,13 @@ msgid ""
 "to use a more robust database like PostgreSQL, to avoid database-switching "
 "headaches down the road."
 msgstr ""
+"Por defecto, la configuración usa SQLite. Si sos nuevo en lo que a base de "
+"datos se refiere, o solamente te interesa probar Django, está es la opción "
+"más simple. SQLite está incluido en Python, entonces no es necesario "
+"instalar nada extra. Sin embargo, cuando empieces un proyecto más serio "
+"quizás quieras considerar una base de datos más robusta como PostgreSQL, "
+"para evitar dolores de cabeza cambiando el motor de base de datos durante el "
+"camino."
 
 #: ../../intro/tutorial01.txt:134
 msgid ""
@@ -2321,6 +2328,11 @@ msgid ""
 "installation>`_, and change the following keys in the :setting:`DATABASES` "
 "``'default'`` item to match your database connection settings:"
 msgstr ""
+"Si querés usar otro motor de base de datos, instalá los `bindings apropiados "
+"<https://docs.djangoproject.com/en/1.8/topics/install/#database-"
+"installation>`_ y cambiá las siguientes claves en :setting:`DATABASES` "
+"``'default'`` para que coincidan con la configuración de tu conexión a la "
+"base de datos:"
 
 #: ../../intro/tutorial01.txt:139
 msgid ""
@@ -2330,6 +2342,11 @@ msgid ""
 "`also available <https://docs.djangoproject.com/en/1.8/ref/databases/#third-"
 "party-notes>`_."
 msgstr ""
+":setting:`ENGINE <DATABASE-ENGINE>` -- Puede ser ``'django.db.backends."
+"postgresql_psycopg2'``, ``'django.db.backends.mysql'``, ``'django.db."
+"backends.sqlite3'`` o ``'django.db.backends.oracle'``. También hay :setting:"
+"`otros backends disponibles <https://docs.djangoproject.com/en/1.8/ref/"
+"databases/#third-party-notes>`_."
 
 #: ../../intro/tutorial01.txt:145
 msgid ""
@@ -2339,6 +2356,11 @@ msgid ""
 "default value, ``os.path.join(BASE_DIR, 'db.sqlite3')``, will store the file "
 "in your project directory."
 msgstr ""
+":setting:`NAME` -- El nombre de la base de datos. Si estás usando SQLite, tu "
+"base de datos será un archivo en tu computadora; en ese caso, :setting:"
+"`NAME` debería ser un path absoluto, incluyendo el nombre del archivo de "
+"base de datos. Si no existiera, se creará automáticamente cuando se "
+"sincronice la base de datos por primera vez."
 
 #: ../../intro/tutorial01.txt:151
 msgid ""
@@ -2346,6 +2368,9 @@ msgid ""
 "setting:`USER`, :setting:`PASSWORD`, :setting:`HOST` must be added. For more "
 "details, see the reference documentation for :setting:`DATABASES`."
 msgstr ""
+"Si no estás usando SQLite, tenés que agregar parámetros adicionales como :"
+"setting:`USER`, :setting:`PASSWORD`, :setting:`HOST`. Para más detalles, ver "
+"la documentación de referencia para :setting:`DATABASES`."
 
 #: ../../intro/tutorial01.txt:156
 msgid ""
@@ -2353,18 +2378,25 @@ msgid ""
 "this point. Do that with \"``CREATE DATABASE database_name;``\" within your "
 "database's interactive prompt."
 msgstr ""
+"Si usás PostgreSQL o MySQL, fijate de crear una base de datos antes de "
+"seguir. Para ello bastará con hacer \\\"``CREATE DATABASE database_name;``\\"
+"\" en el intérprete del motor correspondiente."
 
 #: ../../intro/tutorial01.txt:160
 msgid ""
 "If you're using SQLite, you don't need to create anything beforehand - the "
 "database file will be created automatically when it is needed."
 msgstr ""
+"Si usás SQLite, no es necesario crear nada de antemano - el archivo de la "
+"base de datos se creará automáticamente cuando haga falta."
 
 #: ../../intro/tutorial01.txt:163
 msgid ""
 "While you're editing :file:`mysite/settings.py`, set :setting:`TIME_ZONE` to "
 "your time zone."
 msgstr ""
+"Mientras editás :file:`settings.py`, podés setear :setting:`TIME_ZONE` a tu "
+"zona horaria."
 
 #: ../../intro/tutorial01.txt:166
 msgid ""
@@ -2373,45 +2405,60 @@ msgid ""
 "Django instance. Apps can be used in multiple projects, and you can package "
 "and distribute them for use by others in their projects."
 msgstr ""
+"También podés mirar el setting :setting:`INSTALLED_APPS` hacia el final del "
+"archivo. Éste registra los nombres de todas las aplicaciones Django que "
+"están activadas en esta instancia Django. Las apps se pueden usar en "
+"múltiples proyectos, y podés empaquetarlas y distribuirlas para su uso por "
+"otros en sus respectivos proyectos."
 
 #: ../../intro/tutorial01.txt:171
 msgid ""
 "By default, :setting:`INSTALLED_APPS` contains the following apps, all of "
 "which come with Django:"
 msgstr ""
+"Por defecto, :setting:`INSTALLED_APPS` contiene las siguientes apps, todas "
+"provistas por Django:"
 
 #: ../../intro/tutorial01.txt:174
 msgid ""
 ":mod:`django.contrib.admin` -- The admin site. You'll use it in :doc:`part 2 "
 "of this tutorial </intro/tutorial02>`."
 msgstr ""
+":mod:`django.contrib.admin` -- El sitio de administración. Lo vamos a usar "
+"en :doc:`la parte 2 de este tutorial </intro/tutorial02>`."
 
 #: ../../intro/tutorial01.txt:177
 msgid ":mod:`django.contrib.auth` -- An authentication system."
-msgstr ""
+msgstr ":mod:`django.contrib.auth` -- Sistema de autenticación."
 
 #: ../../intro/tutorial01.txt:179
 msgid ":mod:`django.contrib.contenttypes` -- A framework for content types."
 msgstr ""
+":mod:`django.contrib.contenttypes` -- Un framework para tipos de contenido."
 
 #: ../../intro/tutorial01.txt:181
 msgid ":mod:`django.contrib.sessions` -- A session framework."
 msgstr ""
+":mod:`django.contrib.sessions` -- Un framework para manejo de sesiones."
 
 #: ../../intro/tutorial01.txt:183
 msgid ":mod:`django.contrib.messages` -- A messaging framework."
-msgstr ""
+msgstr ":mod:`django.contrib.messages` -- Un framework de mensajes."
 
 #: ../../intro/tutorial01.txt:185
 msgid ""
 ":mod:`django.contrib.staticfiles` -- A framework for managing static files."
 msgstr ""
+":mod:`django.contrib.staticfiles` -- Un framework para manejar los archivos "
+"estáticos."
 
 #: ../../intro/tutorial01.txt:188
 msgid ""
 "These applications are included by default as a convenience for the common "
 "case."
 msgstr ""
+"Estas aplicaciones están incluidas por defecto como conveniencia para el "
+"caso común."
 
 #: ../../intro/tutorial01.txt:190
 msgid ""
@@ -2419,6 +2466,9 @@ msgid ""
 "so we need to create the tables in the database before we can use them. To "
 "do that, run the following command:"
 msgstr ""
+"Algunas de estas aplicaciones hace uso de al menos una tabla de la base de "
+"datos, entonces necesitaremos crear las respectivas tablas antes de poder "
+"usarlas. Para ello corremos el siguiente comando:"
 
 #: ../../intro/tutorial01.txt:198
 msgid ""
@@ -2430,10 +2480,17 @@ msgid ""
 "for your database and type ``\\dt`` (PostgreSQL), ``SHOW TABLES;`` (MySQL), "
 "or ``.schema`` (SQLite) to display the tables Django created."
 msgstr ""
+"El comando :djadmin:`migrate` se fija en el setting :setting:"
+"`INSTALLED_APPS` y crea las tablas necesarias en la base de datos "
+"determinada por los parámetros establecidos en el archivo :file:`mysite/"
+"settings.py`. Verás un mensaje por cada migración que se aplica. Si estás "
+"interesado, podés correr el cliente de línea de comandos de tu base de datos "
+"y tipear ``\\dt`` (PostgreSQL), ``SHOW TABLES;`` (MySQL), o ``.schema`` "
+"(SQLite) para ver las tablas que Django creó."
 
 #: ../../intro/tutorial01.txt:206
 msgid "For the minimalists"
-msgstr ""
+msgstr "Para los minimalistas"
 
 #: ../../intro/tutorial01.txt:208
 msgid ""
@@ -2443,20 +2500,28 @@ msgid ""
 "`INSTALLED_APPS` before running :djadmin:`migrate`. The :djadmin:`migrate` "
 "command will only run migrations for apps in :setting:`INSTALLED_APPS`."
 msgstr ""
+"Como dijimos arriba, las aplicaciones incluidas por defecto son para el caso "
+"común, pero no todos las necesitan. Si no necesitás alguna o ninguna de las "
+"mismas, sos libre de comentar o borrar las líneas apropiadas de :setting:"
+"`INSTALLED_APPS` antes de correr :djadmin:`migrate`. El comando :djadmin:"
+"`migrate` sólo creará las tablas para las apps en :setting:`INSTALLED_APPS`."
 
 #: ../../intro/tutorial01.txt:216
 msgid "The development server"
-msgstr ""
+msgstr "El servidor de desarrollo"
 
 #: ../../intro/tutorial01.txt:218
 msgid ""
 "Let's verify your Django project works. Change into the outer :file:`mysite` "
 "directory, if you haven't already, and run the following commands:"
 msgstr ""
+"Verifiquemos que el proyecto Django funciona. Cambiamos al directorio :file:"
+"`mysite` de más afuera, si no lo habías hecho, y corremos los siguientes "
+"comandos:"
 
 #: ../../intro/tutorial01.txt:225
 msgid "You'll see the following output on the command line:"
-msgstr ""
+msgstr "Veremos la siguiente salida en la línea de comandos:"
 
 #: ../../intro/tutorial01.txt:237
 msgid ""
@@ -2465,6 +2530,11 @@ msgid ""
 "things rapidly, without having to deal with configuring a production server "
 "-- such as Apache -- until you're ready for production."
 msgstr ""
+"Hemos levantado el servidor de desarrollo de Django, un servidor web liviano "
+"escrito puramente en Python. Viene incluido con Django para permitir "
+"desarrollar rápidamente, sin necesidad de configurar un servidor de "
+"producción -- como Apache -- hasta el momento en que todo esté listo para "
+"producción."
 
 #: ../../intro/tutorial01.txt:242
 msgid ""
@@ -2472,6 +2542,9 @@ msgid ""
 "a production environment. It's intended only for use while developing. "
 "(We're in the business of making Web frameworks, not Web servers.)"
 msgstr ""
+"Este es un buen momento para notar: **NO** hay que usar este servidor para "
+"nada que se parezca a un entorno de producción. Está pensado solamente para "
+"desarrollo (Django es un framework web, no un servidor)."
 
 #: ../../intro/tutorial01.txt:246
 msgid ""
@@ -2479,22 +2552,30 @@ msgid ""
 "browser. You'll see a \"Welcome to Django\" page, in pleasant, light-blue "
 "pastel. It worked!"
 msgstr ""
+"Ahora que el servidor está corriendo, podemos visitar http://127.0.0.1:8000/ "
+"en nuestro browser. Deberíamos ver una página con el mensaje \\\"Welcome to "
+"Django\\\". Funcionó!"
 
 #: ../../intro/tutorial01.txt:250
 msgid "Changing the port"
-msgstr ""
+msgstr "Cambiando el puerto"
 
 #: ../../intro/tutorial01.txt:252
 msgid ""
 "By default, the :djadmin:`runserver` command starts the development server "
 "on the internal IP at port 8000."
 msgstr ""
+"Por defecto, el comando :djadmin:`runserver` levanta el servidor de "
+"desarrollo en una IP interna en el puerto 8000."
 
 #: ../../intro/tutorial01.txt:255
 msgid ""
 "If you want to change the server's port, pass it as a command-line argument. "
 "For instance, this command starts the server on port 8080:"
 msgstr ""
+"Si uno quisiera cambiar el puerto, se puede pasar como argumento en la línea "
+"de comandos. Por ejemplo, para levantar el servidor escuchando en el puerto "
+"8080:"
 
 #: ../../intro/tutorial01.txt:263
 msgid ""
@@ -2502,16 +2583,21 @@ msgid ""
 "listen on all public IPs (useful if you want to show off your work on other "
 "computers), use:"
 msgstr ""
+"Para cambiar la dirección IP del servidor, se pasa junto con el puerto. "
+"Entonces, para escuchar en todas las IP públicas (útil para mostrarle "
+"nuestro trabajo en otras computadoras), podemos usar:"
 
 #: ../../intro/tutorial01.txt:271
 msgid ""
 "Full docs for the development server can be found in the :djadmin:"
 "`runserver` reference."
 msgstr ""
+"La documentación completa sobre el servidor de desarrollo se puede encontrar "
+"en :djadmin:`runserver`."
 
 #: ../../intro/tutorial01.txt:274
 msgid "Automatic reloading of :djadmin:`runserver`"
-msgstr ""
+msgstr "Recarga automática de :djadmin:`runserver`"
 
 #: ../../intro/tutorial01.txt:276
 msgid ""
@@ -2520,16 +2606,23 @@ msgid ""
 "effect. However, some actions like adding files don't trigger a restart, so "
 "you'll have to restart the server in these cases."
 msgstr ""
+"El servidor de desarrollo recarga automáticamente el código Python en cada "
+"request según sea necesario. No es necesario reiniciar el servidor para que "
+"los cambios al código tengan efecto. Sin embargo, algunas acciones como "
+"agregar archivos no producen un reinicio automático y entonces será "
+"necesario reiniciar el servidor a mano en esos casos."
 
 #: ../../intro/tutorial01.txt:284
 msgid "Creating models"
-msgstr ""
+msgstr "Creando modelos"
 
 #: ../../intro/tutorial01.txt:286
 msgid ""
 "Now that your environment -- a \"project\" -- is set up, you're set to start "
 "doing work."
 msgstr ""
+"Ahora que hemos levantado nuestro entorno -- un \\\"proyecto\\\" --, estamos "
+"listos para empezar a trabajar."
 
 #: ../../intro/tutorial01.txt:289
 msgid ""
@@ -2538,6 +2631,10 @@ msgid ""
 "generates the basic directory structure of an app, so you can focus on "
 "writing code rather than creating directories."
 msgstr ""
+"Cada aplicación que uno escribe en Django consiste de un paquete Python que "
+"sigue una ciera convención. Django trae una utilidad que automáticamente "
+"genera la estructura de directorios básica de una app, de tal manera que uno "
+"pueda concentrarse en escribir código en lugar de directorios."
 
 #: ../../intro/tutorial01.txt:294
 msgid "Projects vs. apps"
@@ -2574,10 +2671,12 @@ msgid ""
 "To create your app, make sure you're in the same directory as :file:`manage."
 "py` and type this command:"
 msgstr ""
+"Para crear una app, nos aseguramos de estar en el mismo directorio que :file:"
+"`manage.py` y corremos el comando:"
 
 #: ../../intro/tutorial01.txt:313
 msgid "That'll create a directory :file:`polls`, which is laid out like this::"
-msgstr ""
+msgstr "Esto creará el directorio :file:`polls`, con la siguiente estructura::"
 
 #: ../../intro/tutorial01.txt:324
 msgid "This directory structure will house the poll application."
@@ -2605,6 +2704,11 @@ msgid ""
 "misc/design-philosophies/#dry>`_. The goal is to define your data model in "
 "one place and automatically derive things from it."
 msgstr ""
+"Un modelo es la única y definitiva fuente de datos de nuestra información. "
+"Contiene los campos y comportamientos esenciales de los datos que vamos a "
+"guardar. Django sigue el :ref:`principio DRY <https://docs.djangoproject.com/"
+"en/1.8/misc/design-philosophies/#dry>`_. El objetivo es definir el modelo de "
+"datos en un lugar y automáticamente derivar lo demás a partir de éste."
 
 #: ../../intro/tutorial01.txt:336
 msgid ""
@@ -2613,6 +2717,10 @@ msgid ""
 "just a history that Django can roll through to update your database schema "
 "to match your current models."
 msgstr ""
+"Esto incluye las migraciones - a diferencia de Ruby On Rails, por ejemplo, "
+"las migraciones son completamente derivadas del archivo de modelos, y son "
+"esencialmente una historia que Django puede seguir para actualizar la base "
+"de datos y mantenerla en sincronía con tus modelos."
 
 #: ../../intro/tutorial01.txt:341
 msgid ""
@@ -2621,12 +2729,18 @@ msgid ""
 "``Choice`` has two fields: the text of the choice and a vote tally. Each "
 "``Choice`` is associated with a ``Question``."
 msgstr ""
+"En nuestra simple app poll, vamos a crear dos modelos: ``Question`` and "
+"``Choice``. Una ``Question`` tiene una pregunta y una fecha de publicación. "
+"Una ``Choice`` tiene dos campos: el texto de la opción y un contador de "
+"votos. Cada ``Choice`` está asociada a una ``Question``."
 
 #: ../../intro/tutorial01.txt:346
 msgid ""
 "These concepts are represented by simple Python classes. Edit the :file:"
 "`polls/models.py` file so it looks like this:"
 msgstr ""
+"Estos conceptos se representan mediante clases Python. Editamos el archivo :"
+"file:`polls/models.py` para que se vea así:"
 
 #: ../../intro/tutorial01.txt:365
 msgid ""
@@ -2634,6 +2748,10 @@ msgid ""
 "subclasses :class:`django.db.models.Model`. Each model has a number of class "
 "variables, each of which represents a database field in the model."
 msgstr ""
+"El código es directo. Cada modelo se representa por una clase que hereda de :"
+"class:`django.db.models.Model`. Cada modelo tiene ciertas variables de "
+"clase, cada una de las cuales representa un campo de la base de datos en el "
+"modelo."
 
 #: ../../intro/tutorial01.txt:369
 msgid ""
@@ -2642,6 +2760,10 @@ msgid ""
 "fields and :class:`~django.db.models.DateTimeField` for datetimes. This "
 "tells Django what type of data each field holds."
 msgstr ""
+"Cada campo se representa como una instancia de una clase :class:`~django.db."
+"models.Field` -- e.g., :class:`~django.db.models.CharField` para campos de "
+"caracteres y :class:`~django.db.models.DateTimeField` para fecha y hora. "
+"Esto le dice a Django qué tipo de datos almacena cada campo."
 
 #: ../../intro/tutorial01.txt:374
 msgid ""
@@ -2650,6 +2772,10 @@ msgid ""
 "format. You'll use this value in your Python code, and your database will "
 "use it as the column name."
 msgstr ""
+"El nombre de cada instancia de :class:`~django.db.models.Field` (e.g. "
+"``question_text`` o ``pub_date``) es el nombre del campo, en formato "
+"amigable (a nivel código). Vamos a usar este valor en nuestro código, y la "
+"base de datos lo va a usar como nombre de columna."
 
 #: ../../intro/tutorial01.txt:378
 msgid ""
@@ -2661,6 +2787,13 @@ msgid ""
 "For all other fields in this model, the field's machine-readable name will "
 "suffice as its human-readable name."
 msgstr ""
+"Se puede usar un primer argumento, opcional, de :class:`~django.db.models."
+"Field` para designar un nombre legible (a nivel ser humano). Se usa en "
+"algunas partes en que Django hace introspección, y funciona como "
+"documentación. Si no se provee este argumento, Django usa el nombre del "
+"campo. En el ejemplo, solamente definimos un nombre descriptivo para "
+"``Question.pub_date``. Para todos los demás campos en el modelo, el nombre "
+"del campo será suficiente."
 
 #: ../../intro/tutorial01.txt:386
 msgid ""
@@ -2669,6 +2802,11 @@ msgid ""
 "a :attr:`~django.db.models.CharField.max_length`. That's used not only in "
 "the database schema, but in validation, as we'll soon see."
 msgstr ""
+"Algunas clases de :class:`~django.db.models.Field` tienen argumentos "
+"requeridos. Por ejemplo, :class:`~django.db.models.CharField` requiere que "
+"se pase :attr:`~django.db.models.CharField.max_length`. Esto se usa no sólo "
+"en el esquema de la base de datos sino también en la validación de los "
+"datos, como veremos más adelante."
 
 #: ../../intro/tutorial01.txt:391
 msgid ""
@@ -2676,6 +2814,9 @@ msgid ""
 "in this case, we've set the :attr:`~django.db.models.Field.default` value of "
 "``votes`` to 0."
 msgstr ""
+"Un :class:`~django.db.models.Field` puede tener también varios argumentos "
+"opcionales; en este caso, seteamos el valor :attr:`~django.db.models.Field."
+"default` de ``votes`` a 0."
 
 #: ../../intro/tutorial01.txt:395
 msgid ""
@@ -2684,6 +2825,11 @@ msgid ""
 "``Question``. Django supports all the common database relationships: many-to-"
 "one, many-to-many and one-to-one."
 msgstr ""
+"Finalmente, notemos que se define una relación, usando :class:`~django.db."
+"models.ForeignKey`. Esto le dice a Django que cada ``Choice`` está "
+"relacionada a una única ``Question``. Django soporta todos los tipos de "
+"relación comunes en una base de datos: muchos-a-uno, muchos-a-muchos y uno-a-"
+"uno."
 
 #: ../../intro/tutorial01.txt:403
 msgid "Activating models"
@@ -2708,6 +2854,8 @@ msgid ""
 "Create a Python database-access API for accessing ``Question`` and "
 "``Choice`` objects."
 msgstr ""
+"Crear la API Python de acceso a la base de datos para acceder a los objetos "
+"``Question`` y ``Choice``."
 
 #: ../../intro/tutorial01.txt:411
 msgid ""
@@ -2732,6 +2880,9 @@ msgid ""
 "`INSTALLED_APPS` setting to include the string ``'polls'``. So it'll look "
 "like this:"
 msgstr ""
+"Editamos de nuevo el archivo :file:`mysite/settings.py`, y cambiamos el "
+"setting :setting:`INSTALLED_APPS` para incluir ``'polls'``. Se verá algó "
+"así::"
 
 #: ../../intro/tutorial01.txt:436
 msgid ""
@@ -2740,7 +2891,7 @@ msgstr "Ahora Django sabe sobre nuestra app ``polls``. Corramos otro comando:"
 
 #: ../../intro/tutorial01.txt:442
 msgid "You should see something similar to the following:"
-msgstr ""
+msgstr "\"Deberíamos ver algo similar a lo siguiente:"
 
 #: ../../intro/tutorial01.txt:452
 msgid ""
@@ -2748,6 +2899,9 @@ msgid ""
 "changes to your models (in this case, you've made new ones) and that you'd "
 "like the changes to be stored as a *migration*."
 msgstr ""
+"Corriendo ``makemigrations``, le estamos diciendo a Django que hemos hecho "
+"algunos cambios a nuestros modelos (en este caso, nuevos modelos) y que "
+"quisiéramos registrar esos cambios en una *migración*."
 
 #: ../../intro/tutorial01.txt:456
 msgid ""
@@ -2758,6 +2912,13 @@ msgid ""
 "every time Django makes one, but they're designed to be human-editable in "
 "case you want to manually tweak how Django changes things."
 msgstr ""
+"Las migraciones es como DJango guarda los cambios a nuestros modelos (y por "
+"lo tanto al esquema de base de datos) - son solamente archivos en disco. "
+"Podríamos leer la migración de nuestro nuevo modelo si quisiéramos; es el "
+"archivo ``polls/migrations/0001_initial.py``. No te preocupes, no se espera "
+"que uno las lea cada vez que Django crea una nueva, pero están diseñadas "
+"para ser editables a mano en caso de que se quiera hacer alguna modificación "
+"en la forma que Django aplica los cambios."
 
 #: ../../intro/tutorial01.txt:463
 msgid ""
@@ -2767,12 +2928,18 @@ msgid ""
 "run. The :djadmin:`sqlmigrate` command takes migration names and returns "
 "their SQL:"
 msgstr ""
+"Existe un comando que corre las migraciones y administra el esquema de base "
+"de datos automáticamente - se llama :djadmin:`migrate`, y llegaremos a él en "
+"un momento - pero primero, veamos cuál es el SQL que la migración correría. "
+"El comando :djadmin:`sqlmigrate` toma nombres de migraciones y devuelve el "
+"SQL respectivo:"
 
 #: ../../intro/tutorial01.txt:472
 msgid ""
 "You should see something similar to the following (we've reformatted it for "
 "readability):"
 msgstr ""
+"Deberías ver algo similar a lo siguiente (reformateado aquí por legibilidad):"
 
 #: ../../intro/tutorial01.txt:499
 msgid "Note the following:"
@@ -2783,6 +2950,8 @@ msgid ""
 "The exact output will vary depending on the database you are using. The "
 "example above is generated for PostgreSQL."
 msgstr ""
+"La salida exacta varía de acuerdo a la base de datos que se esté usando. El "
+"ejemplo anterior está generado para PostgreSQL."
 
 #: ../../intro/tutorial01.txt:504
 msgid ""
@@ -2790,6 +2959,9 @@ msgid ""
 "(``polls``) and the lowercase name of the model -- ``question`` and "
 "``choice``. (You can override this behavior.)"
 msgstr ""
+"Los nombres de las tablas se generan automáticamente combinando el nombre de "
+"la app (``polls``) con el nombre, en minúsculas del modelo -- ``question`` y "
+"``choice`` (se puede modificar este comportamientos)."
 
 #: ../../intro/tutorial01.txt:508
 msgid ""
@@ -2812,6 +2984,9 @@ msgid ""
 "constraint. Don't worry about the ``DEFERRABLE`` parts; that's just telling "
 "PostgreSQL to not enforce the foreign key until the end of the transaction."
 msgstr ""
+"La relación de clave foránea se hace explícita mediante un constraint "
+"``FOREIGN KEY``. No te preocupes por la parte del ``DEFERRABLE``; indica a "
+"PostgreSQL no forzar la clave foránea hasta el final de la transacción."
 
 #: ../../intro/tutorial01.txt:517
 msgid ""
@@ -2821,6 +2996,11 @@ msgid ""
 "goes for quoting of field names -- e.g., using double quotes or single "
 "quotes."
 msgstr ""
+"Se ajusta a la base de datos que se esté usando, y entonces los tipos de "
+"campos específicos de la base de datos como ``auto_increment`` (MySQL), "
+"``serial`` (PostgreSQL), o ``integer primary key`` (SQLite) se manejan por "
+"uno automáticamente. Lo mismo aplica para los nombres de los campos -- e.g., "
+"el uso de comillas dobles o simples."
 
 #: ../../intro/tutorial01.txt:523
 msgid ""
@@ -2830,6 +3010,11 @@ msgid ""
 "do or if you have database administrators who require SQL scripts for "
 "changes."
 msgstr ""
+"El comando :djadmin:`sqlmigrate` no corre la migración en la base de datos - "
+"solamente imprime por pantalla para mostrar cuál es el SQL que Django piensa "
+"es requerido. Es útil para chequear lo que Django va a hacer o si uno tiene "
+"administradores de base de datos que requieren el SQL para aplicar los "
+"cambios."
 
 #: ../../intro/tutorial01.txt:529
 msgid ""
@@ -2837,12 +3022,17 @@ msgid ""
 "<check>`; this checks for any problems in your project without making "
 "migrations or touching the database."
 msgstr ""
+"Si te interesa, también podés correr :djadmin:`python manage.py check "
+"<check>`; este comando chequea por cualqueir problema en tu proyecto sin "
+"aplicar las migraciones ni tocar la base de datos."
 
 #: ../../intro/tutorial01.txt:533
 msgid ""
 "Now, run :djadmin:`migrate` again to create those model tables in your "
 "database:"
 msgstr ""
+"Ahora corramos :djadmin:`migrate` de nuevo para crear las tablas "
+"correspondientes a nuestros modelos en la base de datos:"
 
 #: ../../intro/tutorial01.txt:549
 msgid ""
@@ -2852,6 +3042,11 @@ msgid ""
 "essentially, synchronizing the changes you made to your models with the "
 "schema in the database."
 msgstr ""
+"El comando :djadmin:`migrate` toma todas las migraciones que no se aplicaron "
+"(Django lleva registro de cuáles se aplicaron usando una tabla especial en "
+"la base de datos llamada ``django_migrations``) y las corre contra la base "
+"de datos - esencialmente, sincroniza el esquema de la base de datos con los "
+"cambios hechos a nuestros modelos."
 
 #: ../../intro/tutorial01.txt:555
 msgid ""
@@ -2861,22 +3056,32 @@ msgid ""
 "losing data. We'll cover them in more depth in a later part of the tutorial, "
 "but for now, remember the three-step guide to making model changes:"
 msgstr ""
+"Las migraciones son muy poderosas y nos permiten cambiar nuestros modelos a "
+"lo largo del tiempo, mientras se avanza con el proyecto, sin necesidad de "
+"borrar la base de datos o las tablas, y crear nuevas - se especializa en "
+"actualizar la base de datos sin perder información. Las veremos en más "
+"detalle en una parte más adelante del tutorial, pero por ahora, recordermos "
+"los 3 pasos para hacer cambios a nuestros modelos:"
 
 #: ../../intro/tutorial01.txt:561
 msgid "Change your models (in ``models.py``)."
-msgstr ""
+msgstr "Cambiar nuestros modelos (en ``models.py``)."
 
 #: ../../intro/tutorial01.txt:562
 msgid ""
 "Run :djadmin:`python manage.py makemigrations <makemigrations>` to create "
 "migrations for those changes"
 msgstr ""
+"Correr :djadmin:`python manage.py makemigrations <makemigrations>` para "
+"crear las migraciones correspondientes a esos cambios"
 
 #: ../../intro/tutorial01.txt:564
 msgid ""
 "Run :djadmin:`python manage.py migrate <migrate>` to apply those changes to "
 "the database."
 msgstr ""
+"Correr :djadmin:`python manage.py migrate <migrate>` para aplicar esos "
+"cambios a la base de datos."
 
 #: ../../intro/tutorial01.txt:567
 msgid ""
@@ -2885,6 +3090,11 @@ msgid ""
 "your app; they not only make your development easier, they're also useable "
 "by other developers and in production."
 msgstr ""
+"La razón por la que hay comandos separados para crear y aplicar migraciones "
+"es porque vas a necesitar hacer commit de las migraciones en tu sistema de "
+"control de versiones y distribuirlas con tu app; no solamente hacen tu "
+"desarrollo más simple, también son reusables por otros desarrolladores y en "
+"producción."
 
 #: ../../intro/tutorial01.txt:572
 msgid ""
@@ -2892,6 +3102,9 @@ msgid ""
 "ref/django-admin>`_ for full information on what the ``manage.py`` utility "
 "can do."
 msgstr ""
+"Para tener la información completa de qué puede hacer la utilidad ``manage."
+"py``, podés leer la documentación de `django-admin.py <https://docs."
+"djangoproject.com/en/1.8/ref/django-admin>`_."
 
 #: ../../intro/tutorial01.txt:576
 msgid "Playing with the API"
@@ -2911,10 +3124,13 @@ msgid ""
 "py` sets the ``DJANGO_SETTINGS_MODULE`` environment variable, which gives "
 "Django the Python import path to your :file:`mysite/settings.py` file."
 msgstr ""
+"Usamos esto en lugar de simplemente tipear \\\"python\\\" porque :file:"
+"`manage.py` setea la variable de entorno ``DJANGO_SETTINGS_MODULE``, que le "
+"da a Django el import path al archivo :file:`mysite/settings.py`."
 
 #: ../../intro/tutorial01.txt:589
 msgid "Bypassing manage.py"
-msgstr ""
+msgstr "Evitando manage.py"
 
 #: ../../intro/tutorial01.txt:591
 msgid ""
@@ -2922,6 +3138,9 @@ msgid ""
 "`DJANGO_SETTINGS_MODULE` environment variable to ``mysite.settings``, start "
 "a plain Python shell, and set up Django:"
 msgstr ""
+"Si preferís no usar :file:`manage.py`, no hay problema. Basta setear la "
+"variable de entorno :envvar:``DJANGO_SETTINGS_MODULE`` a ``mysite."
+"settings``, levantar un shell de Python, y configurar Django:"
 
 #: ../../intro/tutorial01.txt:600
 msgid ""
@@ -2929,24 +3148,35 @@ msgid ""
 "Django that doesn't match this tutorial version. You'll want to either "
 "switch to the older tutorial or the newer Django version."
 msgstr ""
+"Si esto levanta una excepción :exc:`AttributeError`, probablemente estás "
+"usando una versión de Django que no coincide con la de este tutorial. "
+"Deberías cambiar a la versión del tutorial (o conseguir la versión de "
+"Django) correspondiente."
 
 #: ../../intro/tutorial01.txt:604
 msgid ""
 "You must run ``python`` from the same directory :file:`manage.py` is in, or "
 "ensure that directory is on the Python path, so that ``import mysite`` works."
 msgstr ""
+"Tenés que correr ``python`` en el mismo directorio que está :file:`manage."
+"py`, o asegurarte de que ese directorio está en el Python path, para que "
+"``import mysite`` funcione."
 
 #: ../../intro/tutorial01.txt:608
 msgid ""
 "For more information on all of this, see the `django-admin documentation "
 "<https://docs.djangoproject.com/en/1.8/ref/django-admin>`_."
 msgstr ""
+"Para más información sobre todo esto, ver `la documentación de django-admin "
+"<https://docs.djangoproject.com/en/1.8/ref/django-admin>`_."
 
 #: ../../intro/tutorial01.txt:611
 msgid ""
 "Once you're in the shell, explore the `database API <https://docs."
 "djangoproject.com/en/1.8/topics/db/queries>`_::"
 msgstr ""
+"Una vez en el shell, exploramos la `API de base de datos <https://docs."
+"djangoproject.com/en/1.8/topics/db/queries>`_::"
 
 #: ../../intro/tutorial01.txt:651
 msgid ""
@@ -2955,6 +3185,10 @@ msgid ""
 "model (in the ``polls/models.py`` file) and adding a :meth:`~django.db."
 "models.Model.__str__` method to both ``Question`` and ``Choice``:"
 msgstr ""
+"Un minuto. ``<Question: Question object>`` es, definitivamente, una "
+"representación poco útil de este objeto. Arreglemos esto editando los "
+"modelos (en el archivo ``polls/models.py``) y agregando el método :meth:"
+"`~django.db.models.Model.__str__` a ``Question`` y ``Choice``:"
 
 #: ../../intro/tutorial01.txt:672
 msgid ""
@@ -2963,15 +3197,19 @@ msgid ""
 "interactive prompt, but also because objects' representations are used "
 "throughout Django's automatically-generated admin."
 msgstr ""
+"Es importante agregar el método :meth:`~django.db.models.Model.__str__` a "
+"nuestros modelos, no sólo por nuestra salud al tratar con el intérprete, "
+"sino también porque es la representación usada por Django en la interfaz de "
+"administración autogenerada."
 
 #: ../../intro/tutorial01.txt:677
 msgid "``__str__`` or ``__unicode__``?"
-msgstr ""
+msgstr "``__str__`` o ``__unicode__``?"
 
 #: ../../intro/tutorial01.txt:679
 msgid ""
 "On Python 3, it's easy, just use :meth:`~django.db.models.Model.__str__`."
-msgstr ""
+msgstr "En Python 3, es fácil, usamos :meth:`~django.db.models.Model.__str__`."
 
 #: ../../intro/tutorial01.txt:682
 msgid ""
@@ -2985,16 +3223,27 @@ msgid ""
 "interprets the result as an ASCII bytestring. This difference can create "
 "confusion."
 msgstr ""
+"En Python 2, deberíamos en vez definir el método :meth:`~django.db.models."
+"Model.__unicode__` que devuelva valores ``unicode``. Los modelos de Django "
+"tienen una implementación por defecto de :meth:`~django.db.models.Model."
+"__str__` que llama a :meth:`~django.db.models.Model.__unicode__` y convierte "
+"el resultado a un bytestring UTF-8. Esto quiere decir que ``unicode(p)`` "
+"devuelve un string Unicode, y ``str(p)`` devuelve un bytestring, encodeado "
+"en UTF-8. Python hace lo contrario: ``object`` tiene un método "
+"``__unicode__`` que llama a ``__str__`` e interpreta el resultado como un "
+"bytestring ASCII. Esta diferencia puede generar confusión."
 
 #: ../../intro/tutorial01.txt:692
 msgid "If all of this is gibberish to you, just use Python 3."
-msgstr ""
+msgstr "Si todo esto es mucho ruido, usá Python 3."
 
 #: ../../intro/tutorial01.txt:694
 msgid ""
 "Note these are normal Python methods. Let's add a custom method, just for "
 "demonstration:"
 msgstr ""
+"Notar que estos son métodos Python normales. Agreguemos uno más, como "
+"demostración:"
 
 #: ../../intro/tutorial01.txt:711
 msgid ""
@@ -3005,6 +3254,13 @@ msgid ""
 "can learn more in the `time zone support docs <https://docs.djangoproject."
 "com/en/1.8/topics/i18n/timezones>`_."
 msgstr ""
+"Notar que agregamos ``import datetime`` y ``from django.utils import "
+"timezone``, para referenciar el módulo :mod:`datetime` de la librería "
+"estándar de Python y las utilidades de Django relacionadas a zonas horarias "
+"en :mod:`django.utils.timezone`, respectivamente. Si no estás familiarizado "
+"con el manejo de zonas horarias en Python, podés aprender más en la "
+"`documentación de time zone <https://docs.djangoproject.com/en/1.8/topics/"
+"i18n/timezones>`_."
 
 #: ../../intro/tutorial01.txt:717
 msgid ""
@@ -3024,16 +3280,26 @@ msgid ""
 "`Database API reference <https://docs.djangoproject.com/en/1.8/topics/db/"
 "queries>`_."
 msgstr ""
+"Para más información sobre relaciones en modelos, ver `Acceder objetos "
+"relacionados <https://docs.djangoproject.com/en/1.8/ref/models/relations>`_. "
+"Para más detalles sobre cómo usar los doble guión bajo para efectuar "
+"búsquedas usando la API, ver `Field lookups <https://docs.djangoproject.com/"
+"en/1.8/topics/db/queries/#field-lookups-intro>`_. Para el detalle completo "
+"de la API de base de datos, ver `Database API reference <https://docs."
+"djangoproject.com/en/1.8/topics/db/queries>`_."
 
 #: ../../intro/tutorial01.txt:800
 msgid ""
 "When you're comfortable with the API, read :doc:`part 2 of this tutorial </"
 "intro/tutorial02>` to get Django's automatic admin working."
 msgstr ""
+"Cuando te sientas confortable con la API, podés pasar a :doc:`parte 2 del "
+"tutorial </intro/tutorial02>` para tener funcionando la interfaz automática "
+"de administración de Django."
 
 #: ../../intro/tutorial02.txt:3
 msgid "Writing your first Django app, part 2"
-msgstr ""
+msgstr "Escribiendo tu primera Django app, parte 2"
 
 #: ../../intro/tutorial02.txt:5
 msgid ""
