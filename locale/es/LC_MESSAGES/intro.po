@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Django tutorial 1.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-11 17:36-0300\n"
-"PO-Revision-Date: 2015-04-13 16:58-0300\n"
+"PO-Revision-Date: 2015-04-13 19:45-0300\n"
 "Last-Translator: Matías Bordese <mbordese@gmail.com>\n"
 "Language: Spanish\n"
 "Language-Team: Spanish <es>\n"
@@ -6573,6 +6573,9 @@ msgid ""
 "We've built a tested Web-poll application, and we'll now add a stylesheet "
 "and an image."
 msgstr ""
+"Este tutorial empieza donde dejó el :doc:`Tutorial 5 </intro/tutorial05>`. "
+"Hemos construido una aplicación web de preguntas, y ahora vamos a agregar "
+"una hoja de estilos y una imagen."
 
 #: ../../intro/tutorial06.txt:9
 msgid ""
@@ -6581,6 +6584,10 @@ msgid ""
 "to render the complete web page. In Django, we refer to these files as "
 "\"static files\"."
 msgstr ""
+"Además del HTML generado por el servidor, las aplicaciones web en general "
+"necesitan servir archivos adicionales — como imágenes, JavaScript o CSS — "
+"necesarios para renderizar la página web completa. En Django nos referimos a "
+"estos archivos como \"static files\" (archivos estáticos)."
 
 #: ../../intro/tutorial06.txt:14
 msgid ""
@@ -6590,6 +6597,11 @@ msgid ""
 "multiple sets of static files provided by each application starts to get "
 "tricky."
 msgstr ""
+"Para proyectos pequeños esto no es un gran problema, porque uno mantiene los "
+"archivos estáticos en algún lugar que el servidor web los pueda encontrar. "
+"Sin embargo, en proyectos grandes -- especialmente aquellos compuestos por "
+"múltiples apps -- manejar múltiples conjuntos de archivos estáticos "
+"provistos por cada aplicación empieza a volverse complejo."
 
 #: ../../intro/tutorial06.txt:20
 msgid ""
@@ -6597,10 +6609,14 @@ msgid ""
 "from each of your applications (and any other places you specify) into a "
 "single location that can easily be served in production."
 msgstr ""
+"Para esto está ``django.contrib.staticfiles``: reúne los archivos estáticos "
+"de cada una de nuestras aplicaciones (y cualquier otro lugar que uno "
+"especifique) en una única ubicación que pueda ser fácilmente servida en "
+"producción."
 
 #: ../../intro/tutorial06.txt:25
 msgid "Customize your *app's* look and feel"
-msgstr ""
+msgstr "Personalizando el look and feel de nuestra *app*"
 
 #: ../../intro/tutorial06.txt:27
 msgid ""
@@ -6608,6 +6624,9 @@ msgid ""
 "Django will look for static files there, similarly to how Django finds "
 "templates inside ``polls/templates/``."
 msgstr ""
+"Primero, creamos un directorio llamado ``static`` en nuestro directorio "
+"``polls``. Django va a buscar archivos estáticos allí, de forma similar a "
+"como Django busca por templates dentro de ``polls/templates/``."
 
 #: ../../intro/tutorial06.txt:31
 msgid ""
@@ -6618,6 +6637,13 @@ msgid ""
 "``polls`` we just created. The admin site uses the same directory structure "
 "for its static files."
 msgstr ""
+"El setting de Django :setting:`STATICFILES_FINDERS` contiene una lista de "
+"los \"finders\" (buscadores) que saben cómo encontrar los archivos estáticos "
+"en distintas fuentes. Uno de los habilitados por defecto es "
+"``AppDirectoriesFinder`` que busca un subdirectorio ``static`` en cada una "
+"de las :setting:`INSTALLED_APPS`, como la app ``polls`` que hemos creado. El "
+"sitio de admin usa la misma estructura de directorios para sus archivos "
+"estáticos."
 
 #: ../../intro/tutorial06.txt:38
 msgid ""
@@ -6628,10 +6654,16 @@ msgid ""
 "works, you can refer to this static file in Django simply as ``polls/style."
 "css``, similar to how you reference the path for templates."
 msgstr ""
+"Dentro del directorio ``static`` que hemos creado, creamos otro directorio "
+"llamado ``polls`` y dentro del mismo, un archivo llamado ``style.css``. En "
+"otras palabras, nuestra hoja de estilos estaría en ``polls/static/polls/"
+"style.css``. Por como funciona ``AppDirectoriesFinder``, nos podemos referir "
+"a este archivo estático en Django simplemente como ``polls/style.css``, de "
+"forma similar a como referenciábamos templates."
 
 #: ../../intro/tutorial06.txt:45
 msgid "Static file namespacing"
-msgstr ""
+msgstr "Espacio de nombres de archivos estáticos"
 
 #: ../../intro/tutorial06.txt:47
 msgid ""
@@ -6645,16 +6677,29 @@ msgid ""
 "by putting those static files inside *another* directory named for the "
 "application itself."
 msgstr ""
+"Como con los templates, *podríamos* poner todos nuestros archivos estáticos "
+"directamente en ``polls/static``(en lugar de crear un subdirectorio "
+"``polls``), pero esto no sería una buena idea. Django va a elegir el primer "
+"archivo estático que encuentre cuyo nombre coincida, y si tuviéramos un "
+"archivo del mismo nombre en otra aplicación *diferente*, Django no podría "
+"distinguir entre ellos. Necesitamos apuntar a Django al correcto, y la forma "
+"más fácil de asegurarse de esto es usando espacios de nombres. Esto es, "
+"poner los archivos estáticos en otro directorio que se llame como la  "
+"aplicación a la que pertenecen."
 
 #: ../../intro/tutorial06.txt:57
 msgid ""
 "Put the following code in that stylesheet (``polls/static/polls/style.css``):"
 msgstr ""
+"Pongamos el siguiente código en la hoja de estilos (``polls/static/polls/"
+"style.css``):"
 
 #: ../../intro/tutorial06.txt:66
 msgid ""
 "Next, add the following at the top of ``polls/templates/polls/index.html``:"
 msgstr ""
+"Luego, agreguemos lo siguiente al comienzo de ``polls/templates/polls/index."
+"html``:"
 
 #: ../../intro/tutorial06.txt:75
 msgid ""
@@ -6662,6 +6707,9 @@ msgid ""
 "static>` template tag from the ``staticfiles`` template library. The ``{% "
 "static %}`` template tag generates the absolute URL of the static file."
 msgstr ""
+"`{% load staticfiles %}`` carga el template tag :ttag:`{% static %} "
+"<staticfiles-static>`  de la librería ``staticfiles``. El template tag ``{% "
+"static %}`` genera las URL absolutas del archivo estático."
 
 #: ../../intro/tutorial06.txt:79
 msgid ""
@@ -6669,10 +6717,14 @@ msgid ""
 "polls/`` and you should see that the question links are green (Django "
 "style!) which means that your stylesheet was properly loaded."
 msgstr ""
+"Eso es todo lo que necesitamos para desarrollar. Recargamos ``http://"
+"localhost:8000/polls/`` y deberíamos ver que los links a las preguntas son "
+"verdes (Django syle!), lo que significa que la hoja de estilos se cargó "
+"correctamente."
 
 #: ../../intro/tutorial06.txt:84
 msgid "Adding a background-image"
-msgstr ""
+msgstr "Agregando una imagen de fondo"
 
 #: ../../intro/tutorial06.txt:86
 msgid ""
@@ -6681,16 +6733,25 @@ msgid ""
 "directory, put an image called ``background.gif``. In other words, put your "
 "image in ``polls/static/polls/images/background.gif``."
 msgstr ""
+"A continuación vamos a crear un subdirectorio para imágenes. Creamos el "
+"subdirectorio ``images`` en el directorio ``polls/static/polls/``. Dentro de "
+"ese directorio ponemos una imagen llamada ``background.gif``. En otras "
+"palabras, ponemos nuestra imagen en ``polls/static/polls/images/background."
+"gif``."
 
 #: ../../intro/tutorial06.txt:91
 msgid "Then, add to your stylesheet (``polls/static/polls/style.css``):"
 msgstr ""
+"Luego agreguemos a nuestra hoja de estilos (``polls/static/polls/style."
+"css``):"
 
 #: ../../intro/tutorial06.txt:100
 msgid ""
 "Reload ``http://localhost:8000/polls/`` and you should see the background "
 "loaded in the bottom right of the screen."
 msgstr ""
+"Recargamos ``http://localhost:8000/polls/`` y deberíamos ver la imagen de "
+"fondo cargada en la esquina inferior derecha de la pantalla."
 
 #: ../../intro/tutorial06.txt:105
 msgid ""
@@ -6701,6 +6762,13 @@ msgid ""
 "`static` template tag to generate its URLs) without having to modify a bunch "
 "of paths in your static files as well."
 msgstr ""
+"Por supuesto que el template tag ``{% static %}`` no está disponible para "
+"usar en los archivos estáticos ya que las hojas de estilo no son generadas "
+"por Django. Siempre deberías usar *paths relativos* para referenciar tus "
+"archivos estáticos entre sí, porque de esa forma uno puede cambiar el "
+"setting :setting:`STATIC_URL` (usado por el template tag :ttag:`static` para "
+"generar las URLs), sin tener que modificar también una gran cantidad de "
+"paths en nuestros archivos estáticos."
 
 #: ../../intro/tutorial06.txt:112
 msgid ""
@@ -6711,6 +6779,13 @@ msgid ""
 "`Deploying static files <https://docs.djangoproject.com/en/1.8/howto/static-"
 "files/deployment>`_ discusses how to use static files on a real server."
 msgstr ""
+"Estos son los **conceptos básicos**. Para más detalles sobre los settings y "
+"otros bits incluidos en el framework, ver el `howto de static files <https://"
+"docs.djangoproject.com/en/1.8/howto/static-files/index>`_ y la `referencia "
+"de staticfiles <https://docs.djangoproject.com/en/1.8/ref/contrib/"
+"staticfiles>`_. `Deploying static files <https://docs.djangoproject.com/"
+"en/1.8/howto/static-files/deployment>`_ discute cómo usar archivos estáticos "
+"en un servidor real."
 
 #: ../../intro/tutorial06.txt:122
 msgid ""
@@ -6718,6 +6793,9 @@ msgid ""
 "might want to check out some pointers on :doc:`where to go from here </intro/"
 "whatsnext>`."
 msgstr ""
+"El tutorial para principiantes termina acá. A continuación podrías querer "
+"chequar algunos punteros sobre :doc:`cómo seguir desde aquí </intro/"
+"whatsnext>`."
 
 #: ../../intro/tutorial06.txt:125
 msgid ""
@@ -6725,10 +6803,13 @@ msgid ""
 "turn polls into a \"reusable app\", check out :doc:`Advanced tutorial: How "
 "to write reusable apps </intro/reusable-apps>`."
 msgstr ""
+"Si estás familiarizado con empaquetar Python y estás interesado en aprender "
+"cómo convertir ``polls`` en una \"app reusable\", chequeá :doc:`Tutoral "
+"avanzado: Cómo escribir apps reusables </intro/reusable-apps>`."
 
 #: ../../intro/whatsnext.txt:3
 msgid "What to read next"
-msgstr ""
+msgstr "Qué leer a continuación"
 
 #: ../../intro/whatsnext.txt:5
 msgid ""
@@ -6737,10 +6818,15 @@ msgid ""
 "surface with this intro (in fact, if you've read every single word, you've "
 "read about 5% of the overall documentation)."
 msgstr ""
+"Bien, ya leíste el :doc:`material de introducción </intro/index>` y "
+"decidiste que querés seguir usando Django Esta introducción sólo cubre "
+"Django de manera superficial (de hecho, si leíste toda y cada una de las "
+"palabras de este material, es alrededor de un 5% del total de la "
+"documentación)."
 
 #: ../../intro/whatsnext.txt:10
 msgid "So what's next?"
-msgstr ""
+msgstr "Cómo seguir?"
 
 #: ../../intro/whatsnext.txt:12
 msgid ""
@@ -6748,6 +6834,10 @@ msgid ""
 "should know enough to start a project of your own and start fooling around. "
 "As you need to learn new tricks, come back to the documentation."
 msgstr ""
+"Bueno, siempre hemos sido grandes fans de aprender haciendo. En este punto "
+"deberías saber lo suficiente para empezar un proyecto por tu cuenta y "
+"empezar a probar. A medida que vayas necesitando trucos nuevos, podés volver "
+"a la documentación."
 
 #: ../../intro/whatsnext.txt:16
 msgid ""
@@ -6755,6 +6845,10 @@ msgid ""
 "read and as complete as possible. The rest of this document explains more "
 "about how the documentation works so that you can get the most out of it."
 msgstr ""
+"Hemos puesto un esfuerzo importante para hacer que la documentación de "
+"Django sea útil, fácil de leer y tan completa como sea posible. El resto de "
+"este documento explica un más sobre cómo funciona la documentación para que "
+"puedas aprovecharla al máximo."
 
 #: ../../intro/whatsnext.txt:20
 msgid ""
@@ -6762,10 +6856,13 @@ msgid ""
 "plans to write a document about how to read the document about "
 "documentation.)"
 msgstr ""
+"(Sí, esta documentación es sobre la documentación. Podés quedarte tranquilo "
+"que no tenemos planes de escribir un documento sobre cómo leer el documento "
+"sobre la documentación)."
 
 #: ../../intro/whatsnext.txt:24
 msgid "Finding documentation"
-msgstr ""
+msgstr "Encontrando documentación"
 
 #: ../../intro/whatsnext.txt:26
 msgid ""
@@ -6773,20 +6870,25 @@ msgid ""
 "-- so finding what you need can sometimes be tricky. A few good places to "
 "start are the search and the genindex."
 msgstr ""
+"Django tiene *mucha* documentación -- casi 450.000 palabras y contando --, "
+"entonces encontrar lo que uno necesita puede resultar complicado a veces. Un "
+"par de buenos lugares para empezar son la búsqueda y el índice general."
 
 #: ../../intro/whatsnext.txt:30
 msgid "Or you can just browse around!"
-msgstr ""
+msgstr "O navegarla!"
 
 #: ../../intro/whatsnext.txt:33
 msgid "How the documentation is organized"
-msgstr ""
+msgstr "Cómo se organiza la documentación"
 
 #: ../../intro/whatsnext.txt:35
 msgid ""
 "Django's main documentation is broken up into \"chunks\" designed to fill "
 "different needs:"
 msgstr ""
+"La documentación principal de Django se divide en \"chunks\", diseñados para "
+"cubrir diferentes necesidades:"
 
 #: ../../intro/whatsnext.txt:38
 msgid ""
@@ -6795,6 +6897,10 @@ msgid ""
 "depth, but instead gives a high-level overview of how developing in Django "
 "\"feels\"."
 msgstr ""
+"El :doc:`material introductorio </intro/index>` está diseñado para la gente "
+"nueva en Django -- o nueva en desarrollo web en general. No cubre nada en "
+"profundidad, pero en cambio da un vistazo general a cómo se siente "
+"desarrollar en Django."
 
 #: ../../intro/whatsnext.txt:43
 msgid ""
@@ -6805,6 +6911,12 @@ msgid ""
 "en/1.8/topics/templates>`_, `forms framework <https://docs.djangoproject.com/"
 "en/1.8/topics/forms/index>`_, and much more."
 msgstr ""
+"Las `guías temáticas <https://docs.djangoproject.com/en/1.8/topics/index>`_, "
+"por otro lado, dan un detalle más profundo de las partes individuales de "
+"Django. Hay guías completas sobre `el sistema de modelos <https://docs."
+"djangoproject.com/en/1.8/topics/db/index>`_, `el motor de templates <https://"
+"docs.djangoproject.com/en/1.8/topics/templates>`_, `el framework de forms "
+"<https://docs.djangoproject.com/en/1.8/topics/forms/index>`_, y mucho más."
 
 #: ../../intro/whatsnext.txt:48
 msgid ""
@@ -6812,6 +6924,9 @@ msgid ""
 "your way through these guides you should come out knowing pretty much "
 "everything there is to know about Django."
 msgstr ""
+"Aquí es donde probablemente pases la mayor parte del tiempo; si le encontrás "
+"la vuelta a estas guías deberías salir sabiendo prácticamente todo lo que "
+"hay que saber de Django."
 
 #: ../../intro/whatsnext.txt:52
 msgid ""
@@ -6823,12 +6938,22 @@ msgid ""
 "tags <https://docs.djangoproject.com/en/1.8/howto/custom-template-tags>`_, "
 "and more."
 msgstr ""
+"El desarrollo web se extiende en general a lo ancho, no en profundo -- los "
+"problemas se extienden a muchos dominios. Hemos escrito un conjunto de `how-"
+"to guides <https://docs.djangoproject.com/en/1.8/howto/index>`_ que "
+"responden las preguntas comunes de la forma \"How do I ...?\". Allí "
+"encontrarás información sobre `generar PDFs con Django <https://docs."
+"djangoproject.com/en/1.8/howto/outputting-pdf>`_, `escribir template tags "
+"propios <https://docs.djangoproject.com/en/1.8/howto/custom-template-"
+"tags>`_, y más."
 
 #: ../../intro/whatsnext.txt:58
 msgid ""
 "Answers to really common questions can also be found in the `FAQ <https://"
 "docs.djangoproject.com/en/1.8/faq/index>`_."
 msgstr ""
+"Respuestas a preguntas realmente comunes se pueden encontrar en las `FAQ "
+"<https://docs.djangoproject.com/en/1.8/faq/index>`_."
 
 #: ../../intro/whatsnext.txt:60
 msgid ""
@@ -6839,6 +6964,12 @@ msgid ""
 "ref/index>`_. This is where you'll turn to find the details of a particular "
 "function or whatever you need."
 msgstr ""
+"Estas guías y how-to's no cubren toda clase, función y método disponible en "
+"Django -- eso sería demasiado cuando uno está intentando aprender. En vez de "
+"eso, los detalles de clases, funciones, métodos y módulos individuales se "
+"mantienen en la  `referencia <https://docs.djangoproject.com/en/1.8/ref/"
+"index>`_. Allí es donde deberías dirigirte para encontrar los detalles "
+"particulares de una función o cualquier otra cosa que necesites."
 
 #: ../../intro/whatsnext.txt:67
 msgid ""
@@ -6848,6 +6979,11 @@ msgid ""
 "<https://docs.djangoproject.com/en/1.8/howto/deployment/checklist>`_ for "
 "some things you'll need to think about."
 msgstr ""
+"Si estás interesado en deployar un proyecto para su uso público, nuestra "
+"documentación tiene `varias guías <https://docs.djangoproject.com/en/1.8/"
+"howto/deployment/index>`_ para distintas configuraciones, así como una "
+"`checklist <https://docs.djangoproject.com/en/1.8/howto/deployment/"
+"checklist>`_ para algunos puntos a tener en cuenta."
 
 #: ../../intro/whatsnext.txt:72
 msgid ""
@@ -6858,10 +6994,17 @@ msgid ""
 "to add code to Django itself, and a `few other things that simply don't fit "
 "elsewhere <https://docs.djangoproject.com/en/1.8/misc/index>`_."
 msgstr ""
+"Finalmente, hay documentación \"especializada\" que no es relevante para la "
+"mayoría de los desarrolladores. Esto incluye `release notes <https://docs."
+"djangoproject.com/en/1.8/releases/index>`_ y `internals documentation "
+"<https://docs.djangoproject.com/en/1.8/internals/index>`_ para aquellos que "
+"quieren contribuir código a Django mismo, y `algunas otras cosas que no "
+"encajan en las demás secciones <https://docs.djangoproject.com/en/1.8/misc/"
+"index>`_."
 
 #: ../../intro/whatsnext.txt:80
 msgid "How documentation is updated"
-msgstr ""
+msgstr "Cómo se actualiza la documentación"
 
 #: ../../intro/whatsnext.txt:82
 msgid ""
@@ -6869,28 +7012,39 @@ msgid ""
 "documentation is consistently improving. We improve documentation for "
 "several reasons:"
 msgstr ""
+"Así como el código base de Django se desarrolla y mejora de forma diaria, la "
+"documentación se mejora continuamente. Mejoramos la documentación por varias "
+"razones:"
 
 #: ../../intro/whatsnext.txt:86
 msgid "To make content fixes, such as grammar/typo corrections."
 msgstr ""
+"Para hacer correcciones de contenido, tales como correcciones de tipeo o "
+"gramaticales."
 
 #: ../../intro/whatsnext.txt:88
 msgid ""
 "To add information and/or examples to existing sections that need to be "
 "expanded."
 msgstr ""
+"Para agregar información y/o ejemplos a secciones existentes que lo "
+"necesiten."
 
 #: ../../intro/whatsnext.txt:91
 msgid ""
 "To document Django features that aren't yet documented. (The list of such "
 "features is shrinking but exists nonetheless.)"
 msgstr ""
+"Para documentar características de Django que todavía no lo estuvieran (esa "
+"lista de acorta, pero todavía hay cosas por documentar)."
 
 #: ../../intro/whatsnext.txt:94
 msgid ""
 "To add documentation for new features as new features get added, or as "
 "Django APIs or behaviors change."
 msgstr ""
+"Para agregar documentación de características nuevas a medida que éstas se "
+"agregan, o a medida que el comportamiento de las APIs de Django cambia."
 
 #: ../../intro/whatsnext.txt:97
 msgid ""
@@ -6898,20 +7052,26 @@ msgid ""
 "code. It lives in the `docs`_ directory of our Git repository. Each document "
 "online is a separate text file in the repository."
 msgstr ""
+"La documentación de Django se mantiene en el mismo sistema de control de "
+"versiones que su código. Vive en el directorio `docs`_ de nuestro "
+"repositorio Git. Cada documento es un archivo de texto separado en el "
+"repositorio."
 
 #: ../../intro/whatsnext.txt:104
 msgid "Where to get it"
-msgstr ""
+msgstr "Dónde obtenerla"
 
 #: ../../intro/whatsnext.txt:106
 msgid ""
 "You can read Django documentation in several ways. They are, in order of "
 "preference:"
 msgstr ""
+"Podés leer la documentación de Django en varias formas. En orden de "
+"preferencia:"
 
 #: ../../intro/whatsnext.txt:110
 msgid "On the Web"
-msgstr ""
+msgstr "En la web."
 
 #: ../../intro/whatsnext.txt:112
 msgid ""
@@ -6923,6 +7083,13 @@ msgid ""
 "available to users of the Django development version. (See \"Differences "
 "between versions\" below.)"
 msgstr ""
+"La versión más reciente de Django vive en https://docs.djangoproject.com/en/"
+"dev/. Estas páginas HTML se generan automáticamente a partir de los archivos "
+"de texto en el repositorio. Esto significa que reflejan lo \"último\" en "
+"Django -- incluyen las correcciones y adiciones más recientes, y discuten "
+"las más recientes características de Django, que puede que sólo estén "
+"disponibles a usuarios de la versión en desarrollo de Django (ver "
+"\"Diferencias entre versiones\" más abajo)."
 
 #: ../../intro/whatsnext.txt:120
 msgid ""
@@ -6931,6 +7098,10 @@ msgid ""
 "monitor the ticket system and use your feedback to improve the documentation "
 "for everybody."
 msgstr ""
+"Te alentamos a ayudar mejorar la documentación, enviando cambios, "
+"correcciones y sugerencias en el `sistema de tickets`_. Los desarrolladores "
+"de Django monitorean activamente el sistema de tickets y usan el feedback "
+"para mejorar la documentación para todos."
 
 #: ../../intro/whatsnext.txt:124
 msgid ""
@@ -6940,16 +7111,23 @@ msgid ""
 "google.com/group/django-users/>`_ mailing list or the `#django IRC channel`_ "
 "instead."
 msgstr ""
+"Notar sin embargo que los tickets deben ser relacionados explícitamente a la "
+"documentación, en lugar de hacer preguntas de soporte. Si necesitás ayuda "
+"con algo particular del uso de Django, probá en vez `django-users mailing "
+"list <http://groups.google.com/group/django-users/>`_ o el `canal de #django "
+"en IRC`_."
 
 #: ../../intro/whatsnext.txt:133
 msgid "In plain text"
-msgstr ""
+msgstr "En texto plano"
 
 #: ../../intro/whatsnext.txt:135
 msgid ""
 "For offline reading, or just for convenience, you can read the Django "
 "documentation in plain text."
 msgstr ""
+"Para leer offline, o por conveniencia, se puede leer la documentación de "
+"Django en texto plano."
 
 #: ../../intro/whatsnext.txt:138
 msgid ""
@@ -6957,6 +7135,9 @@ msgid ""
 "(tarball) of the code includes a ``docs/`` directory, which contains all the "
 "documentation for that release."
 msgstr ""
+"Si estás usando un release oficial de Django, notar que el paquete zip "
+"(tarball) del código incluye un directorio ``docs/``, que contiene toda la "
+"documentación de ese release."
 
 #: ../../intro/whatsnext.txt:142
 msgid ""
@@ -6964,6 +7145,9 @@ msgid ""
 "the ``docs/`` directory contains all of the documentation. You can update "
 "your Git checkout to get the latest changes."
 msgstr ""
+"Si estás usando una versión en desarrollo de Django (aka \"trunk\"), notar "
+"que el directorio ``docs/`` contiene toda la documentación. Podés actualizar "
+"tu checkout para recibir los últimos cambios."
 
 #: ../../intro/whatsnext.txt:146
 msgid ""
@@ -6972,16 +7156,22 @@ msgid ""
 "documentation. For example, this will show you each mention of the phrase "
 "\"max_length\" in any Django document:"
 msgstr ""
+"Una manera low-tech de aprovechar la documentación en texto es usando la "
+"utilidad ``grep`` de Unix para buscar una frase en toda la documentación. "
+"Por ejemplo, esto va a mostrar toda mención de la frase \"max_length\"  en "
+"cualquier documento de Django:"
 
 #: ../../intro/whatsnext.txt:156
 msgid "As HTML, locally"
-msgstr ""
+msgstr "Como HTML, localmente"
 
 #: ../../intro/whatsnext.txt:158
 msgid ""
 "You can get a local copy of the HTML documentation following a few easy "
 "steps:"
 msgstr ""
+"Se puede obtener una copia del HTML de la documentación siguiendo unos "
+"simples pasos:"
 
 #: ../../intro/whatsnext.txt:160
 msgid ""
@@ -6989,33 +7179,41 @@ msgid ""
 "text to HTML. You'll need to install Sphinx by either downloading and "
 "installing the package from the Sphinx Web site, or with ``pip``:"
 msgstr ""
+"La documentación de Django usa un sistema llamado Sphinx__ para converitr de "
+"texto plano a HTML. Vas a necesitar instalar Sphinx ya sea bajando e "
+"instalando el paquete del sitio web de Sphinx, o con ``pip``: "
 
 #: ../../intro/whatsnext.txt:168
 msgid ""
 "Then, just use the included ``Makefile`` to turn the documentation into HTML:"
 msgstr ""
+"Luego, basta usar el archivo ``Makefile`` incluido para generar la "
+"documentación en HTML:"
 
 #: ../../intro/whatsnext.txt:176
 msgid "You'll need `GNU Make`__ installed for this."
-msgstr ""
+msgstr "Vas a necesitar `GNU Make`__ instalado para esto."
 
 #: ../../intro/whatsnext.txt:178
 msgid "If you're on Windows you can alternatively use the included batch file:"
 msgstr ""
+"Si estás en Windows, podés alternativamente usar el archivo batch incluido:"
 
 #: ../../intro/whatsnext.txt:185
 msgid "The HTML documentation will be placed in ``docs/_build/html``."
-msgstr ""
+msgstr "La documentación HTML se ubicará en ``docs/_build/html``."
 
 #: ../../intro/whatsnext.txt:189
 msgid ""
 "Generation of the Django documentation will work with Sphinx version 0.6 or "
 "newer, but we recommend going straight to Sphinx 1.0.2 or newer."
 msgstr ""
+"La generación de la documentación de Django funciona con Sphinx 0.6 o mayor, "
+"pero recomendamos usar 1.0.2 o más nueva."
 
 #: ../../intro/whatsnext.txt:198
 msgid "Differences between versions"
-msgstr ""
+msgstr "Diferencias entre versiones"
 
 #: ../../intro/whatsnext.txt:200
 msgid ""
@@ -7026,10 +7224,16 @@ msgid ""
 "worth pointing out our policy on keeping straight the documentation for "
 "various versions of the framework."
 msgstr ""
+"Como se mencionó antes, la documentación en texto en el repositorio Git "
+"contiene \"lo último\" en cambios y adiciones. Estos cambios a veces "
+"incluyen documentación de nuevas características que se agregan en la "
+"version en desarrollo de Django -- la versión Git (\"trunk\") de Django. Por "
+"esta razón vale la pena mencionar nuestra política de mantener la "
+"documentación al día para las distintas versiones del framework."
 
 #: ../../intro/whatsnext.txt:207
 msgid "We follow this policy:"
-msgstr ""
+msgstr "Seguimos esta política:"
 
 #: ../../intro/whatsnext.txt:209
 msgid ""
@@ -7038,12 +7242,19 @@ msgid ""
 "Django release, plus whatever features we've added/changed in the framework "
 "*since* the latest release."
 msgstr ""
+"La documentación primaria en djangoproject.com es la version HTML de lo "
+"último en Git. Esta documentación se corresponde con la última release "
+"oficial de Django, además de las características que se agregaron/cambiaron "
+"*desde* el último release."
 
 #: ../../intro/whatsnext.txt:214
 msgid ""
 "As we add features to Django's development version, we try to update the "
 "documentation in the same Git commit transaction."
 msgstr ""
+"A medida que se agregan características a la versión en desarrollo de "
+"Django, tratamos de mantener la documentación actualizada en el mismo commit "
+"de Git."
 
 #: ../../intro/whatsnext.txt:217
 msgid ""
@@ -7051,6 +7262,9 @@ msgid ""
 "\"New in version X.Y\", being X.Y the next release version (hence, the one "
 "being developed)."
 msgstr ""
+"Para distinguir cambios/adiciones en la documentación, se usa la frase \"New "
+"in version X.Y\", donde X.Y es la próxima versión a ser liberada (es decir, "
+"la versión en desarrollo)."
 
 #: ../../intro/whatsnext.txt:221
 msgid ""
@@ -7060,6 +7274,11 @@ msgid ""
 "internals/release-process/#backwards-compatibility-policy>`_, that version "
 "of the docs won't get any further updates."
 msgstr ""
+"Correcciones y mejoras a la documentación se portan a las versiones "
+"anteriores a discreción del committer; sin embargo, una vez que la versión "
+"de Django `no se soporta más <https://docs.djangoproject.com/en/1.8/"
+"internals/release-process/#backwards-compatibility-policy>`_, la "
+"documentación de esa versión no recibe más actualizaciones."
 
 #: ../../intro/whatsnext.txt:226
 msgid ""
@@ -7067,3 +7286,7 @@ msgid ""
 "previous versions. Be sure you are using the version of the docs "
 "corresponding to the version of Django you are using!"
 msgstr ""
+"La `pagína principal de la documentación en la web`_ incluye links a la "
+"documentación de todas las versiones anteriores. Fijate de chequear que la "
+"versión de la documentación sea la que corresponde a la versión de Django "
+"que estás usando!"
