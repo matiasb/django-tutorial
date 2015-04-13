@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Django tutorial 1.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-11 17:36-0300\n"
-"PO-Revision-Date: 2015-04-13 16:20-0300\n"
+"PO-Revision-Date: 2015-04-13 16:58-0300\n"
 "Last-Translator: Matías Bordese <mbordese@gmail.com>\n"
 "Language: Spanish\n"
 "Language-Team: Spanish <es>\n"
@@ -5591,18 +5591,23 @@ msgid ""
 "We've built a Web-poll application, and we'll now create some automated "
 "tests for it."
 msgstr ""
+"Este tutorial comienza donde dejó el :doc:`Tutorial 4 </intro/tutorial04>`. "
+"Hemos construido una aplicación de preguntas, y ahora vamos a agregar "
+"algunos tests automáticos para la misma."
 
 #: ../../intro/tutorial05.txt:10
 msgid "Introducing automated testing"
-msgstr ""
+msgstr "Introduciendo testing automatizado"
 
 #: ../../intro/tutorial05.txt:13
 msgid "What are automated tests?"
-msgstr ""
+msgstr "Qué son los tests automatizados?"
 
 #: ../../intro/tutorial05.txt:15
 msgid "Tests are simple routines that check the operation of your code."
 msgstr ""
+"Los tests son rutinas simples que chequean el funcionamiento de nuestro "
+"código."
 
 #: ../../intro/tutorial05.txt:17
 msgid ""
@@ -5614,6 +5619,14 @@ msgid ""
 "tutorial01>`, using the :djadmin:`shell` to examine the behavior of a "
 "method, or running the application and entering data to check how it behaves."
 msgstr ""
+"El testing opera a diferentes niveles. Algunos tests pueden aplicar a un "
+"detalle menor - *un método particular de un modelo devuelve el valor "
+"esperado?*, mientras otros verifican el funcionamiento general del software "
+"- *una secuencia de entradas del usuario producen el resultado deseado?* No "
+"difiere del tipo de pruebas que uno hacía en el :doc:`Tutorial 1 </intro/"
+"tutorial01>`, usando el :djadmin:`shell` para examinar el comportamiento de "
+"un método, o correr la aplicación e ingresar datos para chequear cómo se "
+"comporta."
 
 #: ../../intro/tutorial05.txt:25
 msgid ""
@@ -5622,14 +5635,19 @@ msgid ""
 "changes to your app, you can check that your code still works as you "
 "originally intended, without having to perform time consuming manual testing."
 msgstr ""
+"Lo que diferencia a los tests *automatizados* es que el trabajo de hacer las "
+"pruebas lo hace el sistema por uno. Uno crea un conjunto de tests una vez, y "
+"luego a medida que se hacen cambios a la app, se puede verificar que el "
+"código todavía funciona como estaba originalmente pensado, sin tener que "
+"usar tiempo para hacer testing manual."
 
 #: ../../intro/tutorial05.txt:31
 msgid "Why you need to create tests"
-msgstr ""
+msgstr "Por qué es necesario tener tests"
 
 #: ../../intro/tutorial05.txt:33
 msgid "So why create tests, and why now?"
-msgstr ""
+msgstr "Por qué crear tests, y por qué ahora?"
 
 #: ../../intro/tutorial05.txt:35
 msgid ""
@@ -5642,10 +5660,18 @@ msgid ""
 "to know how to create automated tests. But, if that's not the case, now is "
 "an excellent time to learn."
 msgstr ""
+"Uno podría pensar que ya tiene suficiente con ir aprendiendo Python/Django, "
+"y todavía tener que aprender algo más puede parecer demasiado y quizás "
+"innecesario. Después de todo nuestra aplicación de encuestas está "
+"funcionando; tomarse el trabajo de escribir tests automatizados no va a "
+"hacer que funcione mejor. Si crear esta aplicación de encuestas es la última "
+"tarea de programación con Django que vas a hacer, es cierto, no necesitás "
+"saber cómo crear tests automatizados. Pero, si no es el caso, este es un "
+"excelente momento para aprenderlo."
 
 #: ../../intro/tutorial05.txt:45
 msgid "Tests will save you time"
-msgstr ""
+msgstr "Los tests nos ahorrarán tiempo"
 
 #: ../../intro/tutorial05.txt:47
 msgid ""
@@ -5653,6 +5679,9 @@ msgid ""
 "satisfactory test. In a more sophisticated application, you might have "
 "dozens of complex interactions between components."
 msgstr ""
+"Hasta cierto punto, 'chequear que todo parece funcionar' es un test "
+"satisfactorio. En una aplicación más sofisticada, uno podría tener docenas "
+"de interacciones complejas entre componentes."
 
 #: ../../intro/tutorial05.txt:51
 msgid ""
@@ -5662,6 +5691,11 @@ msgid ""
 "variations of your test data just to make sure you haven't broken something "
 "- not a good use of your time."
 msgstr ""
+"Un cambio en cualquiera de esos componentes podría tener consecuencias "
+"inesperadas en el comportamiento de la aplicación. Chequear que todavía "
+"'parece funcionar' podría significar recorrer el funcionamiento del código "
+"con veinte variaciones diferentes de pruebas para estar seguros de que no se "
+"rompió nada - no es un buen uso del tiempo."
 
 #: ../../intro/tutorial05.txt:57
 msgid ""
@@ -5669,6 +5703,9 @@ msgid ""
 "seconds. If something's gone wrong, tests will also assist in identifying "
 "the code that's causing the unexpected behavior."
 msgstr ""
+"Esto es particularmente cierto cuando tests automatizados podrían hacerlo "
+"por uno en segundos. Si algo se rompió, los tests también ayudan a "
+"identificar el código que está causando el comportamiento inesperado."
 
 #: ../../intro/tutorial05.txt:61
 msgid ""
@@ -5676,6 +5713,10 @@ msgid ""
 "creative programming work to face the unglamorous and unexciting business of "
 "writing tests, particularly when you know your code is working properly."
 msgstr ""
+"Algunas veces puede parecer una tarea que nos distrae de nuestro creativo "
+"trabajo de programación para dedicarnos al poco atractivo asunto de escribir "
+"tests, especialmente cuando uno sabe que el código está funcionando "
+"correctamente."
 
 #: ../../intro/tutorial05.txt:65
 msgid ""
@@ -5683,15 +5724,19 @@ msgid ""
 "hours testing your application manually or trying to identify the cause of a "
 "newly-introduced problem."
 msgstr ""
+"Sin embargo, la tarea de escribir tests rinde mucho más que gastar horas "
+"probando la aplicación manualmente o intentando identificar la causa de un "
+"problema que se haya producido con un cambio."
 
 #: ../../intro/tutorial05.txt:70
 msgid "Tests don't just identify problems, they prevent them"
-msgstr ""
+msgstr "Los tests no sólo identifican problemas, los previenen"
 
 #: ../../intro/tutorial05.txt:72
 msgid ""
 "It's a mistake to think of tests merely as a negative aspect of development."
 msgstr ""
+"Es un error pensar que los tests son un aspecto negativo del desarrollo."
 
 #: ../../intro/tutorial05.txt:74
 msgid ""
@@ -5699,6 +5744,9 @@ msgid ""
 "rather opaque. Even when it's your own code, you will sometimes find "
 "yourself poking around in it trying to find out what exactly it's doing."
 msgstr ""
+"Sin tests, el propósito o comportamiento esperado de una aplicación podría "
+"ser poco claro. Incluso siendo código propio, algunas veces uno se encuentra "
+"tratando de adivinar qué es lo que hacía exactamente."
 
 #: ../../intro/tutorial05.txt:78
 msgid ""
@@ -5706,10 +5754,13 @@ msgid ""
 "something goes wrong, they focus light on the part that has gone wrong - "
 "*even if you hadn't even realized it had gone wrong*."
 msgstr ""
+"Los tests cambian eso; iluminan el código desde adentro, y cuando algo va "
+"mal, iluminan la parte que va mal - *aún si uno no se dio cuenta de que algo "
+"va mal*."
 
 #: ../../intro/tutorial05.txt:83
 msgid "Tests make your code more attractive"
-msgstr ""
+msgstr "Los tests hacen el código más atractivo"
 
 #: ../../intro/tutorial05.txt:85
 msgid ""
@@ -5719,16 +5770,22 @@ msgid ""
 "Django's original developers, says \"Code without tests is broken by design."
 "\""
 msgstr ""
+"Uno podría crear una obra de software brillante, pero muchos desarrolladores "
+"simplemente se van a rehusar de verla porque no tiene tests; sin tests, no "
+"van a confiar en ese software. Jacob Kaplan-Moss, uno de los desarrolladores "
+"originales de Django, dice \"El código sin tests está roto por diseño\"."
 
 #: ../../intro/tutorial05.txt:90
 msgid ""
 "That other developers want to see tests in your software before they take it "
 "seriously is yet another reason for you to start writing tests."
 msgstr ""
+"El hecho de que otros desarrolladores quieran ver tests en nuestro software "
+"antes de tomarlo seriamente es otra razón para empezar a escribir tests."
 
 #: ../../intro/tutorial05.txt:94
 msgid "Tests help teams work together"
-msgstr ""
+msgstr "Los tests ayudan a trabajar a un equipo"
 
 #: ../../intro/tutorial05.txt:96
 msgid ""
@@ -5738,14 +5795,20 @@ msgid ""
 "(and that you don't break theirs without knowing). If you want to make a "
 "living as a Django programmer, you must be good at writing tests!"
 msgstr ""
+"Los puntos anteriores están escritos desde el punto de vista de un único "
+"desarrollador manteniendo una aplicación. Aplicaciones complejas son "
+"mantenidas por equipos. Los tests garantizan que otros colegas no rompan "
+"nuestro código sin darse cuenta (y que uno no rompe el de ellos sin "
+"saberlo). Si uno quiere vivir de la programación con Django, debe ser bueno "
+"escribiendo tests!"
 
 #: ../../intro/tutorial05.txt:103
 msgid "Basic testing strategies"
-msgstr ""
+msgstr "Estrategias de testing básicas"
 
 #: ../../intro/tutorial05.txt:105
 msgid "There are many ways to approach writing tests."
-msgstr ""
+msgstr "Hay varias maneras de aprender a escribir tests."
 
 #: ../../intro/tutorial05.txt:107
 msgid ""
@@ -5755,6 +5818,12 @@ msgid ""
 "often do anyway: they describe a problem, then create some code to solve it. "
 "Test-driven development simply formalizes the problem in a Python test case."
 msgstr ""
+"Algunos programadores siguen una disciplina llamada \"`test-driven "
+"development`_\" (desarrollo dirigido por tests); los tests se escriben antes "
+"de escribir el código. Puede parecer contra intuitivo, pero en realidad es "
+"similar a lo que la mayoría de la gente haría: describir un problema, luego "
+"crear el código que lo resuelve. Test-driven development simplemente "
+"formaliza el problema como un caso de test Python."
 
 #: ../../intro/tutorial05.txt:113
 msgid ""
@@ -5762,6 +5831,9 @@ msgid ""
 "that it should have some tests. Perhaps it would have been better to write "
 "some tests earlier, but it's never too late to get started."
 msgstr ""
+"A menudo, alguien nuevo en testing va a crear código y más tarde decidir que "
+"debería tener algunos tests. Tal vez hubiera sido mejor escribir los tests "
+"antes, pero nunca es tarde para empezar."
 
 #: ../../intro/tutorial05.txt:117
 msgid ""
@@ -5771,18 +5843,22 @@ msgid ""
 "your first test the next time you make a change, either when you add a new "
 "feature or fix a bug."
 msgstr ""
+"A veces es difícil darse cuenta por dónde empezar al escribir tests. Si uno "
+"escribió varios miles de líneas de Python, elegir qué testear puede no ser "
+"fácil. En ese caso, es provechoso escribir el primer test la próxima vez que "
+"uno hace un cambio, ya sea una nueva funcionalidad o un fix de un bug."
 
 #: ../../intro/tutorial05.txt:122
 msgid "So let's do that right away."
-msgstr ""
+msgstr "Vamos a hacer eso entonces."
 
 #: ../../intro/tutorial05.txt:127
 msgid "Writing our first test"
-msgstr ""
+msgstr "Escribiendo nuestro primer test"
 
 #: ../../intro/tutorial05.txt:130
 msgid "We identify a bug"
-msgstr ""
+msgstr "Identificamos un bug"
 
 #: ../../intro/tutorial05.txt:132
 msgid ""
@@ -5792,6 +5868,10 @@ msgid ""
 "correct) but also if the ``Question``’s ``pub_date`` field is in the future "
 "(which certainly isn't)."
 msgstr ""
+"Por suerte, hay un pequeño bug en la aplicación ``polls`` que podemos "
+"arreglar: el método ``Question.was_published_recently()`` devuelve ``True`` "
+"si una ``Question`` fue publicada el día anterior (que está bien), pero "
+"también si el campo ``pub_date`` es en el futuro (que no está bien!)."
 
 #: ../../intro/tutorial05.txt:137
 msgid ""
@@ -5799,18 +5879,21 @@ msgid ""
 "future; you'll see that the ``Question`` change list claims it was published "
 "recently."
 msgstr ""
+"Podemos verlo en el Admin; creamos una pregunta cuya fecha es en el futuro; "
+"veremos que el listado de preguntas nos dice que fue publicada recientemente."
 
 #: ../../intro/tutorial05.txt:140
 msgid "You can also see this using the :djadmin:`shell`::"
-msgstr ""
+msgstr "También podemos verlo usando el :djadmin:`shell`::"
 
 #: ../../intro/tutorial05.txt:151
 msgid "Since things in the future are not 'recent', this is clearly wrong."
 msgstr ""
+"Dado que las cosas en el futuro no son 'recientes', esto es incorrecto."
 
 #: ../../intro/tutorial05.txt:154
 msgid "Create a test to expose the bug"
-msgstr ""
+msgstr "Creamos un test que exponga el bug"
 
 #: ../../intro/tutorial05.txt:156
 msgid ""
@@ -5818,6 +5901,9 @@ msgid ""
 "exactly what we can do in an automated test, so let's turn that into an "
 "automated test."
 msgstr ""
+"Lo que acabamos de hacer en el :djadmin:`shell` para verificar el problema "
+"es exactamente lo que podemos hacer en un test automatizado. Hagámoslo "
+"entonces."
 
 #: ../../intro/tutorial05.txt:159
 msgid ""
@@ -5825,11 +5911,16 @@ msgid ""
 "``tests.py`` file; the testing system will automatically find tests in any "
 "file whose name begins with ``test``."
 msgstr ""
+"El lugar por convención para los tests de una aplicación es el archivo "
+"``tests.py`` - el corredor de tests va a buscar los tests allí "
+"automáticamente, en aquellos archivos cuyo nombre empiece po ``test``."
 
 #: ../../intro/tutorial05.txt:163
 msgid ""
 "Put the following in the ``tests.py`` file in the ``polls`` application:"
 msgstr ""
+"Ponemos el siguiente código en el archivo ``tests.py`` en la aplicación "
+"``polls``:"
 
 #: ../../intro/tutorial05.txt:187
 msgid ""
@@ -5838,45 +5929,51 @@ msgid ""
 "the future. We then check the output of ``was_published_recently()`` - which "
 "*ought* to be False."
 msgstr ""
+"Lo que hemos hecho aquí es crear una subclase de :class:`django.test."
+"TestCase` con un método que crea una instancia de ``Question`` con un valor "
+"de ``pub_date`` en el futuro. Luego chequeamos la salida de "
+"``was_published_recently()`` - que *debería* ser False."
 
 #: ../../intro/tutorial05.txt:193
 msgid "Running tests"
-msgstr ""
+msgstr "Corriendo los tests"
 
 #: ../../intro/tutorial05.txt:195
 msgid "In the terminal, we can run our test::"
-msgstr ""
+msgstr "En la terminal, podemos correr nuestro test::"
 
 #: ../../intro/tutorial05.txt:199
 msgid "and you'll see something like::"
-msgstr ""
+msgstr "y veremos algo como::"
 
 #: ../../intro/tutorial05.txt:217
 msgid "What happened is this:"
-msgstr ""
+msgstr "Qué paso aquí:"
 
 #: ../../intro/tutorial05.txt:219
 msgid ""
 "``python manage.py test polls`` looked for tests in the ``polls`` application"
-msgstr ""
+msgstr "``python manage.py test polls`` buscó tests en la aplicación ``polls``"
 
 #: ../../intro/tutorial05.txt:221
 msgid "it found a subclass of the :class:`django.test.TestCase` class"
-msgstr ""
+msgstr "encontró una subclase de :class:`django.test.TestCase`"
 
 #: ../../intro/tutorial05.txt:223
 msgid "it created a special database for the purpose of testing"
-msgstr ""
+msgstr "creó una base de datos especial para los tests"
 
 #: ../../intro/tutorial05.txt:225
 msgid "it looked for test methods - ones whose names begin with ``test``"
-msgstr ""
+msgstr "buscó los métodos de test - aquellos cuyo nombre comienza con ``test``"
 
 #: ../../intro/tutorial05.txt:227
 msgid ""
 "in ``test_was_published_recently_with_future_question`` it created a "
 "``Question`` instance whose ``pub_date`` field is 30 days in the future"
 msgstr ""
+"en ``test_was_published_recently_with_future_question`` creó una instancia "
+"de ``Question`` cuyo valor para el campo ``pub_date`` es 30 días en el futuro"
 
 #: ../../intro/tutorial05.txt:230
 msgid ""
@@ -5884,16 +5981,21 @@ msgid ""
 "``was_published_recently()`` returns ``True``, though we wanted it to return "
 "``False``"
 msgstr ""
+"... y usando el método ``assertEqual()``, descubrió que "
+"``was_published_recently()`` devuelve ``True``, a pesar de que queríamos que "
+"devolviera ``False``"
 
 #: ../../intro/tutorial05.txt:234
 msgid ""
 "The test informs us which test failed and even the line on which the failure "
 "occurred."
 msgstr ""
+"La corrida nos informa qué test falló e incluso la línea en la que se "
+"produjo la falla."
 
 #: ../../intro/tutorial05.txt:238
 msgid "Fixing the bug"
-msgstr ""
+msgstr "Arreglando el bug"
 
 #: ../../intro/tutorial05.txt:240
 msgid ""
@@ -5902,16 +6004,22 @@ msgid ""
 "method in ``models.py``, so that it will only return ``True`` if the date is "
 "also in the past:"
 msgstr ""
+"Ya sabemos cuál es el problema: ``Question.was_published_recently()`` "
+"debería devolver ``False`` si ``pub_date`` tiene un valor en el futuro. "
+"Corregimos el método en ``models.py``, para que sólo devuelva ``True`` si "
+"además la fecha es en el pasado:"
 
 #: ../../intro/tutorial05.txt:252
 msgid "and run the test again::"
-msgstr ""
+msgstr "y corremos el test nuevamente::"
 
 #: ../../intro/tutorial05.txt:262
 msgid ""
 "After identifying a bug, we wrote a test that exposes it and corrected the "
 "bug in the code so our test passes."
 msgstr ""
+"Después de identificar un bug, escribimos el test que lo expone y corregimos "
+"el problema en el código para que nuestro test pase."
 
 #: ../../intro/tutorial05.txt:265
 msgid ""
@@ -5920,10 +6028,15 @@ msgid ""
 "running the test will warn us immediately. We can consider this little "
 "portion of the application pinned down safely forever."
 msgstr ""
+"Muchas cosas pueden salir mal con nuestra aplicación en el futuro, pero "
+"podemos estar seguros de que no vamos a reintroducir este bug "
+"inadvertidamente, porque sólo correr el test nos lo haría notar "
+"inmediatemente. Podemos considerar esta porción de nuestra aplicación "
+"funcionando y cubierta a futuro."
 
 #: ../../intro/tutorial05.txt:271
 msgid "More comprehensive tests"
-msgstr ""
+msgstr "Tests más exhaustivos"
 
 #: ../../intro/tutorial05.txt:273
 msgid ""
@@ -5931,12 +6044,17 @@ msgid ""
 "method; in fact, it would be positively embarrassing if in fixing one bug we "
 "had introduced another."
 msgstr ""
+"Mientras estamos aquí, podemos mejorar la cobertura del método "
+"``was_published_recently()``; de hecho, sería vergonzoso si arreglando un "
+"bug hubiéramos introducido uno nuevo."
 
 #: ../../intro/tutorial05.txt:277
 msgid ""
 "Add two more test methods to the same class, to test the behavior of the "
 "method more comprehensively:"
 msgstr ""
+"Agregamos dos métodos más a la misma clase, para testear el comportamiento "
+"del método de forma más exhaustiva:"
 
 #: ../../intro/tutorial05.txt:301
 msgid ""
@@ -5944,6 +6062,9 @@ msgid ""
 "was_published_recently()`` returns sensible values for past, recent, and "
 "future questions."
 msgstr ""
+"Y ahora tenemos tres tests que confirman que ``Question."
+"was_published_recently()`` devuelve valores sensatos para preguntas pasadas, "
+"recientes y futuras."
 
 #: ../../intro/tutorial05.txt:304
 msgid ""
@@ -5952,10 +6073,14 @@ msgid ""
 "guarantee that the method we have written tests for will behave in expected "
 "ways."
 msgstr ""
+"De nuevo, ``polls`` es una aplicación simple, pero sin importar lo complejo "
+"que pueda crecer en el futuro o la interacción que pueda tener con otro "
+"código, tenemos alguna garantía de que el método para el cual hemos escrito "
+"tests se comportará de la manera esperada."
 
 #: ../../intro/tutorial05.txt:309
 msgid "Test a view"
-msgstr ""
+msgstr "Testeando una view"
 
 #: ../../intro/tutorial05.txt:311
 msgid ""
@@ -5964,10 +6089,15 @@ msgid ""
 "should improve this. Setting a ``pub_date`` in the future should mean that "
 "the Question is published at that moment, but invisible until then."
 msgstr ""
+"La aplicación polls no discrimina: va a publicar cualquier pregunta, "
+"incluyendo aquellas cuyo campo ``pub_date`` tiene un valor en el futuro. "
+"Deberíamos mejorar esto. Tener un ``pub_date`` en el futuro debería "
+"significar que la pregunta se publica en ese momento, pero permanece "
+"invisible hasta entonces."
 
 #: ../../intro/tutorial05.txt:317
 msgid "A test for a view"
-msgstr ""
+msgstr "Un test para una view"
 
 #: ../../intro/tutorial05.txt:319
 msgid ""
@@ -5975,6 +6105,9 @@ msgid ""
 "fix it. In fact that was a simple example of test-driven development, but it "
 "doesn't really matter in which order we do the work."
 msgstr ""
+"Cuando arreglamos el bug de arriba, escribimos un test primero y luego el "
+"código que lo arreglaba. De hecho fue un ejemplo simple de test-driven "
+"development, pero no importa en realidad el orden en que lo hicimos."
 
 #: ../../intro/tutorial05.txt:323
 msgid ""
@@ -5982,16 +6115,21 @@ msgid ""
 "For this test, we want to check its behavior as it would be experienced by a "
 "user through a web browser."
 msgstr ""
+"En nuestro primer test nos concentramos en el comportamiento interno del "
+"código. Para este test, queremos chequear el comportamiento como lo "
+"experimentaría un usuario mediante el browser."
 
 #: ../../intro/tutorial05.txt:327
 msgid ""
 "Before we try to fix anything, let's have a look at the tools at our "
 "disposal."
 msgstr ""
+"Antes de intentar arreglar cualquier cosa, veamos las herramientas a nuestra "
+"disposición."
 
 #: ../../intro/tutorial05.txt:330
 msgid "The Django test client"
-msgstr ""
+msgstr "El cliente para test de Django"
 
 #: ../../intro/tutorial05.txt:332
 msgid ""
@@ -5999,6 +6137,9 @@ msgid ""
 "interacting with the code at the view level.  We can use it in ``tests.py`` "
 "or even in the :djadmin:`shell`."
 msgstr ""
+"Django provee un cliente para test, :class:`~django.test.client.Client`, "
+"para simular la interacción del usuario con el código a nivel view. Podemos "
+"usarlo en ``tests.py`` o incluso en el :djadmin:`shell`."
 
 #: ../../intro/tutorial05.txt:336
 msgid ""
@@ -6006,6 +6147,9 @@ msgid ""
 "of things that won't be necessary in ``tests.py``. The first is to set up "
 "the test environment in the :djadmin:`shell`::"
 msgstr ""
+"Empezaremos de nuevo con el :djadmin:`shell`, donde necesitamos hacer un par "
+"de cosas que no serán necesarias en ``tests.py``. La primera es crear el "
+"ambiente de test en el :djadmin:`shell`::"
 
 #: ../../intro/tutorial05.txt:343
 msgid ""
@@ -6016,6 +6160,13 @@ msgid ""
 "will be run against the existing database and the output may differ slightly "
 "depending on what questions you already created."
 msgstr ""
+":meth:`~django.test.utils.setup_test_environment` instala un renderizador de "
+"templates que nos permitirá examinar algunos atributos adicionales en las "
+"respuestas, tales como ``response.context``, que de otra forma no estarían "
+"disponibles. Notar que este método *no configura* una base de datos para "
+"testing, entonces lo que corramos a continuación va a ser contra la base de "
+"datos existente y la salida podría diferir dependiendo de las preguntas que "
+"hayamos creado."
 
 #: ../../intro/tutorial05.txt:350
 msgid ""
@@ -6023,32 +6174,42 @@ msgid ""
 "use the :class:`django.test.TestCase` class, which comes with its own "
 "client, so this won't be required)::"
 msgstr ""
+"A continuación necesitamos importar la clase del cliente para test (luego en "
+"``tests.py`` vamos a usar la clase :class:`django.test.TestCase`, que viene "
+"con su propio cliente, así que este paso no será requerido)::"
 
 #: ../../intro/tutorial05.txt:358
 msgid "With that ready, we can ask the client to do some work for us::"
 msgstr ""
+"Con eso listo, podemos pedirle al cliente que haga trabajo por nosotros::"
 
 #: ../../intro/tutorial05.txt:391
 msgid "Improving our view"
-msgstr ""
+msgstr "Mejorando nuestra view"
 
 #: ../../intro/tutorial05.txt:393
 msgid ""
 "The list of polls shows polls that aren't published yet (i.e. those that "
 "have a ``pub_date`` in the future). Let's fix that."
 msgstr ""
+"La lista de preguntas nos muestra entradas que no están publicadas todavía "
+"(i.e. aquellas que tienen ``pub_date`` en el futuro). Arreglémoslo."
 
 #: ../../intro/tutorial05.txt:396
 msgid ""
 "In :ref:`Tutorial 4 <tutorial04-amend-views>` we introduced a class-based "
 "view, based on :class:`~django.views.generic.list.ListView`:"
 msgstr ""
+"En el :ref:`Tutorial 4 <tutorial04-amend-views>` reemplazamos las funciones "
+"de view en ``views.py`` por :class:`~django.views.generic.list.ListView`:"
 
 #: ../../intro/tutorial05.txt:410
 msgid ""
 "``response.context_data['latest_question_list']`` extracts the data this "
 "view places into the context."
 msgstr ""
+"``response.context_data['latest_question_list']`` extrae los datos que la "
+"view pone en el contexto."
 
 #: ../../intro/tutorial05.txt:413
 msgid ""
@@ -6056,10 +6217,13 @@ msgid ""
 "checks the date by comparing it with ``timezone.now()``. First we need to "
 "add an import:"
 msgstr ""
+"Necesitamos corregir el método ``get_queryset`` y cambiarlo de tal manera "
+"que también chequee la fecha, comparándola con ``timezone.now()``. Primero "
+"necesitamos hacer un import:"
 
 #: ../../intro/tutorial05.txt:422
 msgid "and then we must amend the ``get_queryset`` method like so:"
-msgstr ""
+msgstr "y luego corregimos el método ``get_queryset`` de la siguiente manera:"
 
 #: ../../intro/tutorial05.txt:436
 msgid ""
@@ -6067,10 +6231,13 @@ msgid ""
 "containing ``Question``\\s whose ``pub_date`` is less than or equal to - "
 "that is, earlier than or equal to - ``timezone.now``."
 msgstr ""
+"``Question.objects.filter(pub_date__lte=timezone.now)`` devuelve un queryset "
+"que contiene las instancias de ``Question`` cuyo campo ``pub_date`` es menor "
+"o igual que - esto es, anterior o igual a - ``timezone.now``."
 
 #: ../../intro/tutorial05.txt:441
 msgid "Testing our new view"
-msgstr ""
+msgstr "Testeando nuestra nueva view"
 
 #: ../../intro/tutorial05.txt:443
 msgid ""
@@ -6081,26 +6248,37 @@ msgid ""
 "you make any change that might affect this* - so let's also create a test, "
 "based on our :djadmin:`shell` session above."
 msgstr ""
+"Ahora podemos verificar que se comporta como esperamos levantando el "
+"servidor de desarrollo, cargando el sitio en el browser, creando "
+"``Questions`` con fechas en el pasado y en el futuro, y chequeando que "
+"solamente se listan aquellas que han sido publicadas. Uno no quiere repetir "
+"estos pasos *cada vez que se hace un cambio que podría afectar esto* - vamos "
+"a crear entonces un test, basándonos en nuestra sesión anterior con el  :"
+"djadmin:`shell`."
 
 #: ../../intro/tutorial05.txt:450
 msgid "Add the following to ``polls/tests.py``:"
-msgstr ""
+msgstr "Agregamos lo siguiente a ``polls/tests.py``:"
 
 #: ../../intro/tutorial05.txt:457
 msgid ""
 "and we'll create a shortcut function to create questions as well as a new "
 "test class:"
 msgstr ""
+"vamos a crear un método de atajo para crear preguntas, como así también una "
+"nueva clase de test:"
 
 #: ../../intro/tutorial05.txt:533
 msgid "Let's look at some of these more closely."
-msgstr ""
+msgstr "Vamos a mirarlo más detenidamente."
 
 #: ../../intro/tutorial05.txt:535
 msgid ""
 "First is a question shortcut function, ``create_question``, to take some "
 "repetition out of the process of creating questions."
 msgstr ""
+"Primero tenemos una función, ``create_question``, para evitar la repetición "
+"en el proceso de crear preguntas."
 
 #: ../../intro/tutorial05.txt:538
 msgid ""
@@ -6111,12 +6289,20 @@ msgid ""
 "examples, we use :meth:`~django.test.SimpleTestCase.assertContains()` and :"
 "meth:`~django.test.TransactionTestCase.assertQuerysetEqual()`."
 msgstr ""
+"``test_index_view_with_no_questions`` no crea preguntas, pero chequea el "
+"mensaje \"No polls are available.\" y verifica que ``latest_question_list`` "
+"es vacío. Notar que la clase :class:`django.test.TestCase` provee algunos "
+"métodos de aserción adicionales. En estos ejemplos usamos :meth:`~django."
+"test.TestCase.assertContains()` y :meth:`~django.test.TestCase."
+"assertQuerysetEqual()`."
 
 #: ../../intro/tutorial05.txt:545
 msgid ""
 "In ``test_index_view_with_a_past_question``, we create a question and verify "
 "that it appears in the list."
 msgstr ""
+"En ``test_index_view_with_a_past_question``, creamos una pregunta y "
+"verificamos que aparece en el listado."
 
 #: ../../intro/tutorial05.txt:548
 msgid ""
@@ -6125,6 +6311,10 @@ msgid ""
 "the first question is no longer there, and so again the index shouldn't have "
 "any questions in it."
 msgstr ""
+"En ``test_index_view_with_a_future_question``, creamos una pregunta con "
+"``pub_date`` en el futuro. La base de datos se resetea para cada método de "
+"test, entonces la primera pregunta no está más, y entonces nuevamente no "
+"deberíamos tener ninguna entrada en el listado."
 
 #: ../../intro/tutorial05.txt:553
 msgid ""
@@ -6133,10 +6323,14 @@ msgid ""
 "every new change in the state of the system, the expected results are "
 "published."
 msgstr ""
+"Y así sucesivamente. En efecto, estamos usando los tests para contar una "
+"historia de entrada de preguntas y la experiencia del usuario en el sitio, y "
+"chequeando que en cada estado y para cada cambio en el estado del sistema, "
+"se publican los resultados esperados."
 
 #: ../../intro/tutorial05.txt:558
 msgid "Testing the ``DetailView``"
-msgstr ""
+msgstr "Testeando ``DetailView``"
 
 #: ../../intro/tutorial05.txt:560
 msgid ""
@@ -6144,6 +6338,10 @@ msgid ""
 "in the *index*, users can still reach them if they know or guess the right "
 "URL. So we need to add a similar  constraint to ``DetailView``:"
 msgstr ""
+"Lo que tenemos funciona bien; sin embargo, aunque las encuestas futuras no "
+"aparecen en el *index*, un usuario todavía puede verlas si saben o adivinan "
+"la URL correcta. Necesitamos restricciones similares para ``DetailViews``, "
+"para lo cual agregamos:"
 
 #: ../../intro/tutorial05.txt:575
 msgid ""
@@ -6151,10 +6349,13 @@ msgid ""
 "``pub_date`` is in the past can be displayed, and that one with a "
 "``pub_date`` in the future is not:"
 msgstr ""
+"Y por supuesto, agregaremos más tests para chequear que una ``Question`` "
+"cuya ``pub_date`` es en el pasado se puede ver, mientras que una con "
+"``pub_date`` en el futuro, no:"
 
 #: ../../intro/tutorial05.txt:608
 msgid "Ideas for more tests"
-msgstr ""
+msgstr "Ideas para otros tests"
 
 #: ../../intro/tutorial05.txt:610
 msgid ""
@@ -6162,6 +6363,9 @@ msgid ""
 "create a new test class for that view. It'll be very similar to what we have "
 "just created; in fact there will be a lot of repetition."
 msgstr ""
+"Deberíamos agregar un método ``get_queryset`` similar al de ``ResultsView`` "
+"y crear una nueva clase para los tests de esta view. Sería parecido a lo que "
+"hemos hecho ya; de hecho, habría bastante repetición."
 
 #: ../../intro/tutorial05.txt:614
 msgid ""
@@ -6172,6 +6376,13 @@ msgid ""
 "``Choices`` and then test that it's not published, as well as create a "
 "similar ``Question`` *with* ``Choices``, and test that it *is* published."
 msgstr ""
+"Podríamos también mejorar nuestra aplicación de diversas maneras, agregando "
+"tests en el camino. Por ejemplo, es tonto permitir que preguntas sin "
+"opciones se puedan publicar en el sitio. Entonces, nuestras views podrían "
+"chequear esto, y excluir esas preguntas. Los tests crearían una instancia de "
+"``Question`` sin ``Choices`` relacionados, y luego verificarían que no se "
+"publica, como así también que si se crea una instancia de ``Question`` *con* "
+"``Choices``, se verifica que *sí* se publica."
 
 #: ../../intro/tutorial05.txt:621
 msgid ""
@@ -6181,16 +6392,23 @@ msgid ""
 "you write the test first and then make the code pass the test, or work out "
 "the logic in your code first and then write a test to prove it."
 msgstr ""
+"Quizás usuarios administradores logueados deberían poder ver preguntas no "
+"publicadas, pero los demás usuarios no. Una vez más: cualquier funcionalidad "
+"que necesite agregarse debe estar acompañada por tests, ya sea escribiendo "
+"el test primero y luego el código que lo hace pasar, o escribir el código de "
+"la funcionalidad primero y luego escribir el test para probarla."
 
 #: ../../intro/tutorial05.txt:627
 msgid ""
 "At a certain point you are bound to look at your tests and wonder whether "
 "your code is suffering from test bloat, which brings us to:"
 msgstr ""
+"En cierto punto uno mira sus tests y se pregunta si el código de los tests "
+"no está creciendo demasiado, lo que nos lleva a:"
 
 #: ../../intro/tutorial05.txt:631
 msgid "When testing, more is better"
-msgstr ""
+msgstr "Tratándose de tests, más es mejor"
 
 #: ../../intro/tutorial05.txt:633
 msgid ""
@@ -6199,6 +6417,10 @@ msgid ""
 "repetition is unaesthetic, compared to the elegant conciseness of the rest "
 "of our code."
 msgstr ""
+"Puede parecer que nuestros tests están creciendo fuera de control. A este "
+"ritmo pronto tendremos más código en nuestros tests que en nuestra "
+"aplicación, y la repetición no es estética, comparada con lo conciso y "
+"elegante del resto de nuestro código."
 
 #: ../../intro/tutorial05.txt:637
 msgid ""
@@ -6206,6 +6428,9 @@ msgid ""
 "test once and then forget about it. It will continue performing its useful "
 "function as you continue to develop your program."
 msgstr ""
+"**No importa**. Dejémoslos crecer. En gran medida, uno escribe un test una "
+"vez y luego se olvida. Va a seguir cumpliendo su función mientras uno "
+"continúa desarrollando su programa."
 
 #: ../../intro/tutorial05.txt:641
 msgid ""
@@ -6215,6 +6440,11 @@ msgid ""
 "amended to bring them up to date*, so to that extent tests help look after "
 "themselves."
 msgstr ""
+"Algunas veces los tests van a necesitar actualizarse. Supongamos que "
+"corregimos nuestras views para que solamente se publiquen ``Questions`` con "
+"``Choices``. En ese caso, muchos de nuestros tests existentes van a fallar - "
+"*diciéndonos qué tests actualizar y corregir*, así que hasta cierto punto "
+"los tests pueden cuidarse ellos mismos."
 
 #: ../../intro/tutorial05.txt:646
 msgid ""
@@ -6222,28 +6452,33 @@ msgid ""
 "tests that are now redundant. Even that's not a problem; in testing "
 "redundancy is a *good* thing."
 msgstr ""
+"A lo sumo, mientras uno continúa desarrollando, se puede encontrar que hay "
+"algunos tests que se hacen redundantes. Incluso esto no es un problema; en "
+"testing, la redundancia es algo *bueno*."
 
 #: ../../intro/tutorial05.txt:650
 msgid ""
 "As long as your tests are sensibly arranged, they won't become unmanageable. "
 "Good rules-of-thumb include having:"
 msgstr ""
+"Mientras que los tests estén organizados de manera razonable, no se van a "
+"hacer inmanejables. Algunas buenas prácticas:"
 
 #: ../../intro/tutorial05.txt:653
 msgid "a separate ``TestClass`` for each model or view"
-msgstr ""
+msgstr "un ``TestClass`` separado para cada modelo o view"
 
 #: ../../intro/tutorial05.txt:654
 msgid "a separate test method for each set of conditions you want to test"
-msgstr ""
+msgstr "un método de test separado para cada conjunto de condiciones a probar"
 
 #: ../../intro/tutorial05.txt:655
 msgid "test method names that describe their function"
-msgstr ""
+msgstr "nombres de método de test que describan su función"
 
 #: ../../intro/tutorial05.txt:658
 msgid "Further testing"
-msgstr ""
+msgstr "Testing adicional"
 
 #: ../../intro/tutorial05.txt:660
 msgid ""
@@ -6251,6 +6486,9 @@ msgid ""
 "deal more you can do, and a number of very useful tools at your disposal to "
 "achieve some very clever things."
 msgstr ""
+"Este tutorial solamente presenta lo básico sobre testing. Hay bastante más "
+"que se puede hacer, y existen herramientas muy útiles a disposición para "
+"lograr cosas muy interesantes."
 
 #: ../../intro/tutorial05.txt:664
 msgid ""
@@ -6263,6 +6501,16 @@ msgid ""
 "site, as if a human being were driving it! Django includes :class:`~django."
 "test.LiveServerTestCase` to facilitate integration with tools like Selenium."
 msgstr ""
+"Por ejemplo, mientras que nuestros tests han cubierto la lógica interna de "
+"un modelo y la forma en que nuestras views publican información, uno podría "
+"usar un framework \"in-browser\" como Selenium_ para testear la manera en "
+"que el HTML se renderiza en un browser. Estas herramientas nos permiten no "
+"sólo chequear el comportamiento de nuestro código Django, si no también, por "
+"ejemplo, nuestro JavaScript. Es algo muy curioso ver los tests ejecutar un "
+"browser y empezar a interactuar con nuestro sitio como si un humano lo "
+"estuviera controlando! Django incluye :class:`~django.test."
+"LiveServerTestCase` para facilitar la integración con herramientas como "
+"Selenium."
 
 #: ../../intro/tutorial05.txt:673
 msgid ""
@@ -6270,6 +6518,9 @@ msgid ""
 "with every commit for the purposes of `continuous integration`_, so that "
 "quality control is itself - at least partially - automated."
 msgstr ""
+"Si uno tiene una aplicación compleja, podría querer correr los tests "
+"automáticamente con cada commit con el propósito de 'integración continua'_, "
+"de tal manera de automatizar - al menos parcialmente - el control de calidad."
 
 #: ../../intro/tutorial05.txt:677
 msgid ""
@@ -6280,28 +6531,41 @@ msgid ""
 "coverage.py <https://docs.djangoproject.com/en/1.8/topics/testing/advanced/"
 "#topics-testing-code-coverage>`_ for details."
 msgstr ""
+"Una buena forma de encontrar partes de nuestra aplicación sin testear es "
+"chequar el cubrimiento del código. Esto también ayuda a identificar código "
+"frágil o muerto. Si uno no puede testear un fragmento de código, en general "
+"significa que ese código debería refactorearse o borrarse. Ver `Integración "
+"con coverage <https://docs.djangoproject.com/en/1.8/topics/testing/advanced/"
+"#topics-testing-code-coverage>`_ para más detalles."
 
 #: ../../intro/tutorial05.txt:683
 msgid ""
 "`Testing in Django <https://docs.djangoproject.com/en/1.8/topics/testing/"
 "index>`_ has comprehensive information about testing."
 msgstr ""
+"`Testing en Django <https://docs.djangoproject.com/en/1.8/topics/testing/"
+"index>`_ tiene información exhaustiva sobre testing."
 
 #: ../../intro/tutorial05.txt:692
 msgid ""
 "For full details on testing, see `Testing in Django <https://docs."
 "djangoproject.com/en/1.8/topics/testing/index>`_."
 msgstr ""
+"Para un detalle completo sobre testing, ver `Testing en Django <https://docs."
+"djangoproject.com/en/1.8/topics/testing/index>`_."
 
 #: ../../intro/tutorial05.txt:694
 msgid ""
 "When you're comfortable with testing Django views, read :doc:`part 6 of this "
 "tutorial </intro/tutorial06>` to learn about static files management."
 msgstr ""
+"Una vez que estés cómodo con el testing de views en Django, podés leer la :"
+"doc:`parte 6 de este tutorial </intro/tutorial06>` para aprender sobre el "
+"manejo de recursos estáticos."
 
 #: ../../intro/tutorial06.txt:3
 msgid "Writing your first Django app, part 6"
-msgstr ""
+msgstr "Escribiendo tu primera Django app, parte 6"
 
 #: ../../intro/tutorial06.txt:5
 msgid ""
