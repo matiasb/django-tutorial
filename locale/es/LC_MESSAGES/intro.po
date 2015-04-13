@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Django tutorial 1.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-11 17:36-0300\n"
-"PO-Revision-Date: 2015-04-12 21:01-0300\n"
+"PO-Revision-Date: 2015-04-13 16:20-0300\n"
 "Last-Translator: Matías Bordese <mbordese@gmail.com>\n"
 "Language: Spanish\n"
 "Language-Team: Spanish <es>\n"
@@ -4303,9 +4303,10 @@ msgid ""
 "You will be pleased to know that Django allows us much more elegant *URL "
 "patterns* than that."
 msgstr ""
-"En la web puede que te hayas encontrado con cosas como ME2/Sites/dirmod.asp?"
-"sid=&type=gen&mod=Core+Pages&gid=A6CD4967199A42D9B65B1B\". Estarás encantado "
-"de saber que Django permite definir *patrones de URL* mucho más elegantes."
+"En la web puede que te hayas encontrado con cosas como \"ME2/Sites/dirmod."
+"asp?sid=&type=gen&mod=Core+Pages&gid=A6CD4967199A42D9B65B1B\". Estarás "
+"encantado de saber que Django permite definir *patrones de URL* mucho más "
+"elegantes."
 
 #: ../../intro/tutorial03.txt:52
 msgid ""
@@ -5116,20 +5117,25 @@ msgid ""
 "We're continuing the Web-poll application and will focus on simple form "
 "processing and cutting down our code."
 msgstr ""
+"Este tutorial comienza donde dejó el :doc:`Tutorial 3 </intro/tutorial03>`. "
+"Vamos a continuar la aplicación de preguntas concentrándonos en procesar "
+"forms simples y reducir nuestro código."
 
 #: ../../intro/tutorial04.txt:10
 msgid "Write a simple form"
-msgstr ""
+msgstr "Escribir un form simple"
 
 #: ../../intro/tutorial04.txt:12
 msgid ""
 "Let's update our poll detail template (\"polls/detail.html\") from the last "
 "tutorial, so that the template contains an HTML ``<form>`` element:"
 msgstr ""
+"Actualicemos el template de detalle de una encuesta (\"polls/detail.html\") "
+"del último tutorial para que contenga un elemento HTML ``<form>``:"
 
 #: ../../intro/tutorial04.txt:31
 msgid "A quick rundown:"
-msgstr ""
+msgstr "Un repaso rápido:"
 
 #: ../../intro/tutorial04.txt:33
 msgid ""
@@ -5140,6 +5146,12 @@ msgid ""
 "data ``choice=#`` where # is the ID of the selected choice. This is the "
 "basic concept of HTML forms."
 msgstr ""
+"El template de arriba muestra un radio button para cada opción de la "
+"pregunta. El ``value`` de cada radio es el ID asociado a cada opción de la "
+"pregunta. El ``name``, es ``\"choice\"``. Esto significa que cuando alguien "
+"elige una de las opciones y envía el form, se envía ``choice=#`` como data "
+"del POST, donde # es el ID de la opción elegida. Este es un concepto básico "
+"de forms HTML."
 
 #: ../../intro/tutorial04.txt:40
 msgid ""
@@ -5150,12 +5162,19 @@ msgid ""
 "data server-side, use ``method=\"post\"``. This tip isn't specific to "
 "Django; it's just good Web development practice."
 msgstr ""
+"Establecemos como ``action`` del form ``{% url 'polls:vote' question.id %}"
+"``, y ``method=\"post\"``. Usar ``method=\"post\"`` (en contraposición a "
+"``method=\"get\"``) es muy importante, porque la acción de enviar el form va "
+"a modificar datos del lado del servidor. Cada vez que uno crea un form que "
+"altere datos del lado del servidor, usar ``method=\"post\"``. Este consejo "
+"no es particular para Django; es una buena práctica de desarrollo web."
 
 #: ../../intro/tutorial04.txt:47
 msgid ""
 "``forloop.counter`` indicates how many times the :ttag:`for` tag has gone "
 "through its loop"
 msgstr ""
+"``forloop.counter`` indica cuantas veces el tag :ttag:`for` iteró en el ciclo"
 
 #: ../../intro/tutorial04.txt:50
 msgid ""
@@ -5166,6 +5185,12 @@ msgid ""
 "at internal URLs should use the :ttag:`{% csrf_token %}<csrf_token>` "
 "template tag."
 msgstr ""
+"Como estamos creando un form POST (que puede tener el efecto de modificar "
+"datos), necesitamos preocuparnos por Cross Site Request Forgeries (CSRF). "
+"Afortunadamente no hace falta demasiado, porque Django viene con un sistema "
+"fácil de usar para protegerse contra este tipo de ataques. Simplemente todos "
+"los forms que hagan POST contra una URL interna deberían usar el template "
+"tag :ttag:`{% csrf_token %}<csrf_token>`."
 
 #: ../../intro/tutorial04.txt:57
 msgid ""
@@ -5173,17 +5198,23 @@ msgid ""
 "something with it. Remember, in :doc:`Tutorial 3 </intro/tutorial03>`, we "
 "created a URLconf for the polls application that includes this line:"
 msgstr ""
+"Ahora vamos a crear una view Django que maneje los datos enviados y haga "
+"algo con ellos. Recordemos que en el :doc:`Tutorial 3 </intro/tutorial03>` "
+"creamos un URLconf para nuestra app que incluía la siguiente línea:"
 
 #: ../../intro/tutorial04.txt:66
 msgid ""
 "We also created a dummy implementation of the ``vote()`` function. Let's "
 "create a real version. Add the following to ``polls/views.py``:"
 msgstr ""
+"También habíamos creado una implementación boba de la función ``vote()``. "
+"Hagamos una implementación real. Agregamos lo siguiente a ``polls/views.py``:"
 
 #: ../../intro/tutorial04.txt:96
 msgid ""
 "This code includes a few things we haven't covered yet in this tutorial:"
 msgstr ""
+"Este código incluye algunas cosas que no hemos cubierto hasta el momento:"
 
 #: ../../intro/tutorial04.txt:98
 msgid ""
@@ -5193,6 +5224,11 @@ msgid ""
 "string. :attr:`request.POST <django.http.HttpRequest.POST>` values are "
 "always strings."
 msgstr ""
+":attr:`request.POST <django.http.HttpRequest.POST>` es un objeto diccionario-"
+"like que nos permite acceder a los datos enviados usando los nombres como "
+"clave. En este caso ``request.POST['choice']`` devuelve el ID de la opción "
+"elegida, como string. Los valores de :attr:`request.POST <django.http."
+"HttpRequest.POST>` son siempre strings."
 
 #: ../../intro/tutorial04.txt:104
 msgid ""
@@ -5201,6 +5237,11 @@ msgid ""
 "attr:`request.POST <django.http.HttpRequest.POST>` in our code, to ensure "
 "that data is only altered via a POST call."
 msgstr ""
+"Notar que Django también provee :attr:`request.GET <django.http.HttpRequest."
+"GET>` para acceder a los datos en el GET de la misma manera -- pero estamos "
+"usando explícitamente :attr:`request.POST <django.http.HttpRequest.POST>` en "
+"nuestro código para asegurarnos de que los datos solamente se alteren vía "
+"una llamada POST."
 
 #: ../../intro/tutorial04.txt:110
 msgid ""
@@ -5208,6 +5249,9 @@ msgid ""
 "provided in POST data. The above code checks for :exc:`KeyError` and "
 "redisplays the question form with an error message if ``choice`` isn't given."
 msgstr ""
+"``request.POST['choice']`` va a levantar :exc:`KeyError` si ``choice`` no "
+"estuviera en los datos del POST. El código de arriba chequea por esta "
+"excepción y en ese caso vuelve a mostrar el form con un mensaje de error."
 
 #: ../../intro/tutorial04.txt:115
 msgid ""
@@ -5217,6 +5261,11 @@ msgid ""
 "argument: the URL to which the user will be redirected (see the following "
 "point for how we construct the URL in this case)."
 msgstr ""
+"Después de incrementar el contador de la opción, el código devuelve un :"
+"class:`~django.http.HttpResponseRedirect` en lugar de un :class:`~django."
+"http.HttpResponse`. :class:`~django.http.HttpResponseRedirect` toma un único "
+"argumento: la URL a la que el usuario será redirigido (ver el punto "
+"siguiente sobre cómo construir la URL en este caso)."
 
 #: ../../intro/tutorial04.txt:122
 msgid ""
@@ -5225,6 +5274,10 @@ msgid ""
 "data. This tip isn't specific to Django; it's just good Web development "
 "practice."
 msgstr ""
+"Como dice el comentario en el código de arriba, uno siempre debería devolver "
+"un :class:`~django.http.HttpResponseRedirect` después de manejar "
+"exitosamente un POST. Este consejo no es específico a Django; es una buena "
+"práctica de desarrollo web."
 
 #: ../../intro/tutorial04.txt:127
 msgid ""
@@ -5236,12 +5289,21 @@ msgid ""
 "URLconf we set up in Tutorial 3, this :func:`~django.core.urlresolvers."
 "reverse` call will return a string like ::"
 msgstr ""
+"Estamos usando la función :func:`~django.core.urlresolvers.reverse` en el "
+"constructor de :class:`~django.http.HttpResponseRedirect`. Esta función nos "
+"ayuda a no escribir explícitamente una URL en la función de view. Se le pasa "
+"el nombre de la view a la que queremos pasar el control y los argumentos "
+"variables del patrón de URL que apunta a esa view. En este caso, usando el "
+"URLconf que configuramos en el Tutorial 3, esta llamada a :func:`~django."
+"core.urlresolvers.reverse` devolvería un string como el siguiente::"
 
 #: ../../intro/tutorial04.txt:138
 msgid ""
 "... where the ``3`` is the value of ``p.id``. This redirected URL will then "
 "call the ``'results'`` view to display the final page."
 msgstr ""
+"... donde ``3`` es el valor de ``p.id``. Esta URL nos va a redirigir, "
+"llamando a la view ``'results'`` para mostrar la página final."
 
 #: ../../intro/tutorial04.txt:141
 msgid ""
@@ -5250,12 +5312,18 @@ msgid ""
 "see the `request and response documentation <https://docs.djangoproject.com/"
 "en/1.8/ref/request-response>`_."
 msgstr ""
+"Como se mencionó en el Tutorial 3, ``request`` es un objeto :class:`~django."
+"http.HttpRequest`. Para más detalles sobre este tipo de objetos, se puede "
+"ver la `documentación sobre request y response <https://docs.djangoproject."
+"com/en/1.8/ref/request-response>`_."
 
 #: ../../intro/tutorial04.txt:145
 msgid ""
 "After somebody votes in a question, the ``vote()`` view redirects to the "
 "results page for the question. Let's write that view:"
 msgstr ""
+"Después de que alguien vota en una encuesta, la view ``vote()`` lo redirige "
+"a la página de resultados de la pregunta. Escribamos esta view:"
 
 #: ../../intro/tutorial04.txt:158
 msgid ""
@@ -5263,10 +5331,13 @@ msgid ""
 "3 </intro/tutorial03>`. The only difference is the template name. We'll fix "
 "this redundancy later."
 msgstr ""
+"Esto es casi exactamente igual a la view ``detail()`` del :doc:`Tutorial 3 </"
+"intro/tutorial03>`. La única diferencia es el nombre del template. Vamos a "
+"solucionar esta redundancia luego."
 
 #: ../../intro/tutorial04.txt:161
 msgid "Now, create a ``polls/results.html`` template:"
-msgstr ""
+msgstr "Ahora, creamos el template ``polls/results.html``:"
 
 #: ../../intro/tutorial04.txt:176
 msgid ""
@@ -5275,10 +5346,13 @@ msgid ""
 "submit the form without having chosen a choice, you should see the error "
 "message."
 msgstr ""
+"Vamos a ``/polls/1/`` en el browser y votamos en la encuesta. Deberíamos ver "
+"una página de resultados que se actualiza cada vez que uno vota. Si se envía "
+"el form sin elegir una opción, se debería mostrar un mensaje de error."
 
 #: ../../intro/tutorial04.txt:181
 msgid "Use generic views: Less code is better"
-msgstr ""
+msgstr "Usando views genéricas (generic views): Menos código es mejor"
 
 #: ../../intro/tutorial04.txt:183
 msgid ""
@@ -5287,6 +5361,10 @@ msgid ""
 "The ``index()`` view (also from Tutorial 3), which displays a list of polls, "
 "is similar."
 msgstr ""
+"Las views ``detail()`` (del :doc:`Tutorial 3 </intro/tutorial03>`) y "
+"``results()`` son súper simples -- y, cómo se menciona arriba, redundantes. "
+"La view ``index()`` (también del Tutorial 3), que muestra una lista de "
+"preguntas, es similar."
 
 #: ../../intro/tutorial04.txt:187
 msgid ""
@@ -5295,12 +5373,18 @@ msgid ""
 "template and returning the rendered template. Because this is so common, "
 "Django provides a shortcut, called the \"generic views\" system."
 msgstr ""
+"Estas views representan un caso común en el desarrollo web básico: obtener "
+"datos de una base de datos de acuerdo a un parámetro pasado en la URL, "
+"cargar un template y devolver el template renderizado. Por ser tan usual, "
+"Django provee un atajo, el sistema de \"generic views\" (views genéricas)."
 
 #: ../../intro/tutorial04.txt:192
 msgid ""
 "Generic views abstract common patterns to the point where you don't even "
 "need to write Python code to write an app."
 msgstr ""
+"Las views genéricas abstraen patrones comunes, al punto en que uno no "
+"necesita prácticamente escribir código Python en una app."
 
 #: ../../intro/tutorial04.txt:195
 msgid ""
@@ -5308,26 +5392,28 @@ msgid ""
 "a bunch of our own code. We'll just have to take a few steps to make the "
 "conversion. We will:"
 msgstr ""
+"Vamos a convertir nuestra app para usar views genéricas, y poder borrar "
+"parte de nuestro código original. Son solamente unos pocos pasos:"
 
 #: ../../intro/tutorial04.txt:199
 msgid "Convert the URLconf."
-msgstr ""
+msgstr "Convertir el URLconf."
 
 #: ../../intro/tutorial04.txt:201
 msgid "Delete some of the old, unneeded views."
-msgstr ""
+msgstr "Borrar algunas de las views que teníamos, ya no necesarias."
 
 #: ../../intro/tutorial04.txt:203
 msgid "Introduce new views based on Django's generic views."
-msgstr ""
+msgstr "Arreglar el manejo de URL para las nuevas views."
 
 #: ../../intro/tutorial04.txt:205
 msgid "Read on for details."
-msgstr ""
+msgstr "Para más detalles, seguir leyendo."
 
 #: ../../intro/tutorial04.txt:207
 msgid "Why the code-shuffle?"
-msgstr ""
+msgstr "Por qué cambiar nuestro código?"
 
 #: ../../intro/tutorial04.txt:209
 msgid ""
@@ -5337,28 +5423,39 @@ msgid ""
 "intentionally has focused on writing the views \"the hard way\" until now, "
 "to focus on core concepts."
 msgstr ""
+"Generalmente, cuando uno escribe una app Django, evaluará si usar views "
+"genéricas es una buena solución para el problema en cuestión, y las "
+"utilizará desde el comienzo, en lugar de refactorear el código a mitad de "
+"camino. Este tutorial intencionalmente se centró en escribir views \"sin "
+"ayuda\" hasta ahora, para aprender los conceptos principales."
 
 #: ../../intro/tutorial04.txt:215
 msgid "You should know basic math before you start using a calculator."
 msgstr ""
+"Uno debería aprender matemática básica antes de empezar a usar una "
+"calculadora."
 
 #: ../../intro/tutorial04.txt:218
 msgid "Amend URLconf"
-msgstr ""
+msgstr "Arreglando URLconf"
 
 #: ../../intro/tutorial04.txt:220
 msgid "First, open the ``polls/urls.py`` URLconf and change it like so:"
 msgstr ""
+"Primero, abrimos el URLconf ``polls/urls.py`` y lo cambiamos de la siguiente "
+"manera:"
 
 #: ../../intro/tutorial04.txt:236
 msgid ""
 "Note that the name of the matched pattern in the regexes of the second and "
 "third patterns has changed from ``<question_id>`` to ``<pk>``."
 msgstr ""
+"Notar que el nombre del patrón que se busca en las segunda y tercera "
+"expresiones regulares cambió de ``<question_id>`` a ``<pk>``."
 
 #: ../../intro/tutorial04.txt:242
 msgid "Amend views"
-msgstr ""
+msgstr "Arreglando views"
 
 #: ../../intro/tutorial04.txt:244
 msgid ""
@@ -5366,6 +5463,9 @@ msgid ""
 "views and use Django's generic views instead. To do so, open the ``polls/"
 "views.py`` file and change it like so:"
 msgstr ""
+"A continuación vamos a borrar nuestras viejas views ``index``, ``detail``, y "
+"``results`` para usar las generic views de Django en vez. Para ello, abrimos "
+"el archivo ``polls/views.py`` y cambiamos:"
 
 #: ../../intro/tutorial04.txt:281
 msgid ""
@@ -5374,12 +5474,18 @@ msgid ""
 "Respectively, those two views abstract the concepts of \"display a list of "
 "objects\" and \"display a detail page for a particular type of object.\""
 msgstr ""
+"Estamos usando dos views genéricas: :class:`~django.views.generic.list."
+"ListView` y :class:`~django.views.generic.detail.DetailView`. Estas dos "
+"views nos abstraen de los conceptos de \"mostrar una lista de objetos\" y "
+"\"mostrar el detalle de un objeto particular\", respectivamente."
 
 #: ../../intro/tutorial04.txt:287
 msgid ""
 "Each generic view needs to know what model it will be acting upon. This is "
 "provided using the ``model`` attribute."
 msgstr ""
+"Cada view genérica necesita saber sobre qué modelo actuar. Esto se define "
+"usando el atributo ``model``."
 
 #: ../../intro/tutorial04.txt:290
 msgid ""
@@ -5387,6 +5493,9 @@ msgid ""
 "the primary key value captured from the URL to be called ``\"pk\"``, so "
 "we've changed ``question_id`` to ``pk`` for the generic views."
 msgstr ""
+"La view genérica :class:`~django.views.generic.detail.DetailView` espera el "
+"valor de clave primaria capturado de la URL con nombre ``\\\"pk\\\"``, "
+"entonces cambiamos ``question_id`` a ``pk``."
 
 #: ../../intro/tutorial04.txt:295
 msgid ""
@@ -5400,6 +5509,15 @@ msgid ""
 "rendered, even though they're both a :class:`~django.views.generic.detail."
 "DetailView` behind the scenes."
 msgstr ""
+"Por defecto, la view genérica :class:`~django.views.generic.detail."
+"DetailView` usa un template llamado ``<app name>/<model name>_detail.html``. "
+"En nuestro caso, usará el template ``\"polls/question_detail.html\"``. El "
+"argumento ``template_name`` es usado para indicarle a Django que use un "
+"template de nombre específico en lugar de usar el nombre de template "
+"autogenerado por defecto. También especificamos ``template_name`` para la "
+"view ``results`` -- esto nos asegura que la view de resultados y la de "
+"detalle tiene un aspecto diferente al renderizarse, aún cuando ambas usan :"
+"class:`~django.views.generic.detail.DetailView` por detrás."
 
 #: ../../intro/tutorial04.txt:305
 msgid ""
@@ -5408,6 +5526,11 @@ msgid ""
 "``template_name`` to tell :class:`~django.views.generic.list.ListView` to "
 "use our existing ``\"polls/index.html\"`` template."
 msgstr ""
+"De forma similar, la view genérica :class:`~django.views.generic.list."
+"ListView` usa un template por defecto llamado ``<app name>/<model name>_list."
+"html``; usamos ``template_name`` para indicarle a :class:`~django.views."
+"generic.list.ListView` que use el template ya existente ``\"polls/index.html"
+"\"``."
 
 #: ../../intro/tutorial04.txt:311
 msgid ""
@@ -5423,26 +5546,44 @@ msgid ""
 "default context variables -- but it's a lot easier to just tell Django to "
 "use the variable you want."
 msgstr ""
+"En partes anteriores de este tutorial, los templates recibían un contexto "
+"que contenía las variables ``question`` y ``latest_question_list``. Para "
+"``DetailView`` la variable ``question`` es provista automáticamente -- como "
+"estamos usando un modelo Django (``Question``), Django puede determinar un "
+"nombre adecuado para la variable de contexto. Sin embargo, para ListView, el "
+"nombre de variable de contexto generado automáticamente es "
+"``question_list``. Para sobreescribir este valor, pasamos la opción "
+"``context_object_name``, especificando que queremos usar "
+"``latest_question_list`` como nombre. Otra alternativa sería cambiar los "
+"templates para adecuarlos a los nombres por defecto -- pero es mucho más "
+"fácil decirle a Django que use el nombre de variable que queremos."
 
 #: ../../intro/tutorial04.txt:323
 msgid "Run the server, and use your new polling app based on generic views."
 msgstr ""
+"Corremos el servidor, y usamos nuestra app, ahora basada en views genéricas."
 
 #: ../../intro/tutorial04.txt:325
 msgid ""
 "For full details on generic views, see the `generic views documentation "
 "<https://docs.djangoproject.com/en/1.8/topics/class-based-views/index>`_."
 msgstr ""
+"Para más detalles sobre views genéricas, se puede ver la `documentación "
+"sobre views genéricas <https://docs.djangoproject.com/en/1.8/topics/class-"
+"based-views/index>`_."
 
 #: ../../intro/tutorial04.txt:327
 msgid ""
 "When you're comfortable with forms and generic views, read :doc:`part 5 of "
 "this tutorial </intro/tutorial05>` to learn about testing our polls app."
 msgstr ""
+"Una vez que estés cómodo con forms y views genéricas, podés leer la :doc:"
+"`parte 5 de este tutorial </intro/tutorial05>` para aprender sobre cómo "
+"testear nuestra app de preguntas."
 
 #: ../../intro/tutorial05.txt:3
 msgid "Writing your first Django app, part 5"
-msgstr ""
+msgstr "Escribiendo tu primera Django app, parte 5"
 
 #: ../../intro/tutorial05.txt:5
 msgid ""
