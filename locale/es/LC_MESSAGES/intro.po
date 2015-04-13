@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Django tutorial 1.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-11 17:36-0300\n"
-"PO-Revision-Date: 2015-04-12 19:26-0300\n"
+"PO-Revision-Date: 2015-04-12 21:01-0300\n"
 "Last-Translator: Matías Bordese <mbordese@gmail.com>\n"
 "Language: Spanish\n"
 "Language-Team: Spanish <es>\n"
@@ -4204,6 +4204,9 @@ msgid ""
 "We're continuing the Web-poll application and will focus on creating the "
 "public interface -- \"views.\""
 msgstr ""
+"Este tutorial empieza donde quedó el :doc:`Tutorial 2 </intro/tutorial02>`. "
+"Continuamos con la aplicación web de preguntas y nos concentraremos en la "
+"creación de la interfaz pública -- \"views\"."
 
 #: ../../intro/tutorial03.txt:12
 msgid ""
@@ -4211,59 +4214,75 @@ msgid ""
 "serves a specific function and has a specific template. For example, in a "
 "blog application, you might have the following views:"
 msgstr ""
+"Una view es un \"tipo\" de página web en nuestra aplicación Django que "
+"generalmente provee una función específica y tiene un template particular. "
+"Por ejemplo, en una aplicación de blog, uno podría tener las siguientes "
+"views:"
 
 #: ../../intro/tutorial03.txt:16
 msgid "Blog homepage -- displays the latest few entries."
-msgstr ""
+msgstr "Blog homepage -- muestra las últimas entradas."
 
 #: ../../intro/tutorial03.txt:18
 msgid "Entry \"detail\" page -- permalink page for a single entry."
-msgstr ""
+msgstr "Detalle de una entrada -- página correspondiente a una entrada o post."
 
 #: ../../intro/tutorial03.txt:20
 msgid ""
 "Year-based archive page -- displays all months with entries in the given "
 "year."
 msgstr ""
+"Archivo anual -- muestra los meses de una año con sus correspondientes "
+"entradas."
 
 #: ../../intro/tutorial03.txt:23
 msgid ""
 "Month-based archive page -- displays all days with entries in the given "
 "month."
 msgstr ""
+"Archivo mensual -- muestra los días de un mes con las correspondientes "
+"entradas."
 
 #: ../../intro/tutorial03.txt:26
 msgid "Day-based archive page -- displays all entries in the given day."
-msgstr ""
+msgstr "Archivo diario -- muestra todas las entradas en un día dado."
 
 #: ../../intro/tutorial03.txt:28
 msgid "Comment action -- handles posting comments to a given entry."
 msgstr ""
+"Acción de comentar -- maneja el posteo de comentarios en una entrada dada."
 
 #: ../../intro/tutorial03.txt:30
 msgid "In our poll application, we'll have the following four views:"
 msgstr ""
+"En nuestra aplicación de preguntas, vamos a tener las siguientes cuatro "
+"views:"
 
 #: ../../intro/tutorial03.txt:32
 msgid "Question \"index\" page -- displays the latest few questions."
-msgstr ""
+msgstr "Página índice -- muestra las últimas preguntas."
 
 #: ../../intro/tutorial03.txt:34
 msgid ""
 "Question \"detail\" page -- displays a question text, with no results but "
 "with a form to vote."
 msgstr ""
+"Detalle de pregunta -- muestra el texto de la pregunta, sin resultados, "
+"junto con un form para votar."
 
 #: ../../intro/tutorial03.txt:37
 msgid ""
 "Question \"results\" page -- displays results for a particular question."
 msgstr ""
+"Página de resultados -- muestra los resultados para una pregunta particular."
 
 #: ../../intro/tutorial03.txt:39
 msgid ""
 "Vote action -- handles voting for a particular choice in a particular "
 "question."
 msgstr ""
+"Acción de votar -- maneja el voto por una opción particular en una pregunta "
+"dada."
 
 #: ../../intro/tutorial03.txt:42
 msgid ""
@@ -4272,6 +4291,10 @@ msgid ""
 "based views). Django will choose a view by examining the URL that's "
 "requested (to be precise, the part of the URL after the domain name)."
 msgstr ""
+"En Django, las páginas web y otro contenido se manejan mediante views. Cada "
+"view se representa por una simple función Python (o método, en el caso de "
+"views basadas en clases). Django elige una view examinando la URL que se "
+"pidió (para ser precisos, la parte de la URL después del nombre de dominio)."
 
 #: ../../intro/tutorial03.txt:47
 msgid ""
@@ -4280,50 +4303,67 @@ msgid ""
 "You will be pleased to know that Django allows us much more elegant *URL "
 "patterns* than that."
 msgstr ""
+"En la web puede que te hayas encontrado con cosas como ME2/Sites/dirmod.asp?"
+"sid=&type=gen&mod=Core+Pages&gid=A6CD4967199A42D9B65B1B\". Estarás encantado "
+"de saber que Django permite definir *patrones de URL* mucho más elegantes."
 
 #: ../../intro/tutorial03.txt:52
 msgid ""
 "A URL pattern is simply the general form of a URL - for example: ``/"
 "newsarchive/<year>/<month>/``."
 msgstr ""
+"Un patrón de URL es simplemente la forma genérica de una URL - por ejemplo: "
+"``/newsarchive/<year>/<month>/``."
 
 #: ../../intro/tutorial03.txt:55
 msgid ""
 "To get from a URL to a view, Django uses what are known as 'URLconfs'. A "
 "URLconf maps URL patterns (described as regular expressions) to views."
 msgstr ""
+"Para llegar de una URL a una view, Django usa lo que se conoce como "
+"'URLconfs'. Un URLconf mapea patrones de URL (descriptos como expresiones "
+"regulares) a views."
 
 #: ../../intro/tutorial03.txt:58
 msgid ""
 "This tutorial provides basic instruction in the use of URLconfs, and you can "
 "refer to :mod:`django.core.urlresolvers` for more information."
 msgstr ""
+"Este tutorial provee las instrucciones básicas para el uso de URLconfs, para "
+"más información referirse a :mod:`django.core.urlresolvers`."
 
 #: ../../intro/tutorial03.txt:62
 msgid "Write your first view"
-msgstr ""
+msgstr "Escribiendo nuestra primera view"
 
 #: ../../intro/tutorial03.txt:64
 msgid ""
 "Let's write the first view. Open the file ``polls/views.py`` and put the "
 "following Python code in it:"
 msgstr ""
+"Escribamos nuestra primera view. Abrimos el archivo ``polls/views.py`` y "
+"ponemos el siguiente código Python:"
 
 #: ../../intro/tutorial03.txt:76
 msgid ""
 "This is the simplest view possible in Django. To call the view, we need to "
 "map it to a URL - and for this we need a URLconf."
 msgstr ""
+"Esta es la view más simple posible en Django. Para llamar a esta view, "
+"necesitamos mapearla a una URL - y para ello necesitamos un URLconf."
 
 #: ../../intro/tutorial03.txt:79
 msgid ""
 "To create a URLconf in the polls directory, create a file called ``urls."
 "py``. Your app directory should now look like::"
 msgstr ""
+"Para crear un URLconf, en el directorio polls creamos un archivo llamado "
+"``urls.py``. La estructura de directorios de nuestra app ahora debería verse "
+"así::"
 
 #: ../../intro/tutorial03.txt:90
 msgid "In the ``polls/urls.py`` file include the following code:"
-msgstr ""
+msgstr "En el archivo ``polls/urls.py`` incluimos el siguiente código:"
 
 #: ../../intro/tutorial03.txt:103
 msgid ""
@@ -4331,6 +4371,9 @@ msgid ""
 "``mysite/urls.py`` insert an :func:`~django.conf.urls.include`, leaving you "
 "with:"
 msgstr ""
+"El próximo paso es apuntar el URLconf raíz al módulo ``polls.urls``. En "
+"``mysite/urls.py`` insertamos un :func:`~django.conf.urls.include`, con lo "
+"que nos quedaría:"
 
 #: ../../intro/tutorial03.txt:120
 msgid ""
@@ -4339,6 +4382,10 @@ msgid ""
 "match this tutorial version.  You'll want to either switch to the older "
 "tutorial or the newer Django version."
 msgstr ""
+"Si estás viendo ``admin.autodiscover()`` antes de la definición de "
+"``urlpatterns``, probablemente estás usando una versión de Django que no "
+"coincide con la de este tutorial. Deberías cambiar a una versión anterior "
+"del tutorial o a una versión más nueva de Django."
 
 #: ../../intro/tutorial03.txt:125
 msgid ""
@@ -4347,6 +4394,10 @@ msgid ""
 "world. You're at the polls index.*\", which you defined in the ``index`` "
 "view."
 msgstr ""
+"Hemos conectado una view ``index`` en el URLconf. Si vamos a la dirección "
+"http://localhost:8000/polls/ en nuestro browser, deberíamos ver el texto "
+"\"*Hello, world. You're at the polls index.*\", que definimos la view "
+"``index``."
 
 #: ../../intro/tutorial03.txt:130
 msgid ""
@@ -4354,10 +4405,13 @@ msgid ""
 "required: ``regex`` and ``view``, and two optional: ``kwargs``, and "
 "``name``. At this point, it's worth reviewing what these arguments are for."
 msgstr ""
+"La función :func:`~django.conf.urls.url` toma cuatro argumentos, dos "
+"requeridos: ``regex`` y ``view``, y dos opcionales: ``kwargs``, y ``name``. "
+"En este punto vale la pena revisar para que es cada uno de ellos."
 
 #: ../../intro/tutorial03.txt:135
 msgid ":func:`~django.conf.urls.url` argument: regex"
-msgstr ""
+msgstr ":func:`~django.conf.urls.url`: argumento regex"
 
 #: ../../intro/tutorial03.txt:137
 msgid ""
@@ -4367,6 +4421,12 @@ msgid ""
 "down the list,  comparing the requested URL against each regular expression "
 "until it finds one that matches."
 msgstr ""
+"El término \"regex\" se usa comúnmente como abreviatura para `expresión "
+"regular` (`regular expression`, en inglés), que es una forma de describir "
+"patrones que se verifiquen en un string, o en este caso patrones de url. "
+"Django comienza en la primera expresión regular y va recorriendo la lista "
+"hacia abajo, comparando la URL solicitada contra cada expresión regular "
+"hasta encontrar una cuyo patrón coincida."
 
 #: ../../intro/tutorial03.txt:143
 msgid ""
@@ -4375,6 +4435,10 @@ msgid ""
 "myapp/``, the URLconf will look for ``myapp/``. In a request to ``http://www."
 "example.com/myapp/?page=3``, the URLconf will also look for ``myapp/``."
 msgstr ""
+"Notar que estas expresiones regulares no chequean parámetros de GET o POST, "
+"o el nombre de dominio. Por ejemplo, en un pedido por ``http://www.example."
+"com/myapp/``, el URLconf buscará por ``myapp/``. En un pedido por ``http://"
+"www.example.com/myapp/?page=3``, el URLconf también buscará por ``myapp/``."
 
 #: ../../intro/tutorial03.txt:149
 msgid ""
@@ -4386,6 +4450,14 @@ msgid ""
 "have poor lookup performance, so you probably shouldn't rely on the full "
 "power of regexes."
 msgstr ""
+"Si necesitaras ayuda con las expresiones regulares, podés ver `Wikipedia`_ y "
+"la documentación del módulo :mod:`re`. También es fantástico, el libro de "
+"O'Reilly \"Mastering Regular Expressions\", de Jeffrey Friedl. En la "
+"práctica, sin embargo, no hace falta ser un experto en expresiones "
+"regulares, ya que lo que realmente es necesario saber es cómo capturar "
+"patrones simples. De hecho, expresiones regulares complejas pueden afectar "
+"la performance de búsqueda, por lo que uno no debería confiar en todo el "
+"poder de las expresiones regulares."
 
 #: ../../intro/tutorial03.txt:156
 msgid ""
@@ -4393,10 +4465,13 @@ msgid ""
 "first time the URLconf module is loaded. They're super fast (as long as the "
 "lookups aren't too complex as noted above)."
 msgstr ""
+"Finalmente, una nota sobre performance: estas expresiones regulares se "
+"compilan la primera vez que el módulo URLconf se carga. Son súper rápidas "
+"(mientras que no sean complejas como se menciona arriba)."
 
 #: ../../intro/tutorial03.txt:163
 msgid ":func:`~django.conf.urls.url` argument: view"
-msgstr ""
+msgstr ":func:`~django.conf.urls.url`: argumento view"
 
 #: ../../intro/tutorial03.txt:165
 msgid ""
@@ -4407,20 +4482,29 @@ msgid ""
 "positional arguments; if it uses named captures, values are passed as "
 "keyword arguments. We'll give an example of this in a bit."
 msgstr ""
+"Cuando Django encuentra una expresión regular que coincide, se llama a la "
+"función view especificada, con un objeto :class:`~django.http.HttpRequest` "
+"como primer argumento y los valores que se hayan “capturado” a partir de la "
+"expresión regular como argumentos restantes. Si la regex usa capturas "
+"simples (sin nombre), los valores se pasan como argumentos posicionales; si "
+"se usan capturas con nombre, los valores se pasan como argumentos nombrados. "
+"Veremos un ejemplo en breve."
 
 #: ../../intro/tutorial03.txt:173
 msgid ":func:`~django.conf.urls.url` argument: kwargs"
-msgstr ""
+msgstr ":func:`~django.conf.urls.url`: argumento kwargs"
 
 #: ../../intro/tutorial03.txt:175
 msgid ""
 "Arbitrary keyword arguments can be passed in a dictionary to the target "
 "view. We aren't going to use this feature of Django in the tutorial."
 msgstr ""
+"Se pueden pasar argumentos arbitrarios en un diccionario a la view de "
+"destino. No vamos a usar esta opción en el tutorial."
 
 #: ../../intro/tutorial03.txt:179
 msgid ":func:`~django.conf.urls.url` argument: name"
-msgstr ""
+msgstr ":func:`~django.conf.urls.url`: argumento name"
 
 #: ../../intro/tutorial03.txt:181
 msgid ""
@@ -4429,22 +4513,31 @@ msgid ""
 "changes to the url patterns of your project while only touching a single "
 "file."
 msgstr ""
+"Nombrar las URL nos permite referirnos a ellas de forma unívoca desde "
+"distintas partes del código, especialmente en los templates. Esta "
+"característica nos permite hacer cambios globales a los patrones de url del "
+"proyecto cambiando tan sólo un archivo (ya que el nombre permanece sin "
+"cambios, y nos referimos a una URL por su nombre)."
 
 #: ../../intro/tutorial03.txt:186
 msgid "Writing more views"
-msgstr ""
+msgstr "Escribiendo más views"
 
 #: ../../intro/tutorial03.txt:188
 msgid ""
 "Now let's add a few more views to ``polls/views.py``. These views are "
 "slightly different, because they take an argument:"
 msgstr ""
+"Ahora agreguemos algunas views más a ``polls/views.py``. Estas views van a "
+"ser un poco diferentes porque van a tomar un argumento:"
 
 #: ../../intro/tutorial03.txt:204
 msgid ""
 "Wire these new views into the ``polls.urls`` module by adding the following :"
 "func:`~django.conf.urls.url` calls:"
 msgstr ""
+"Conectemos estas nuevas views en el módulo ``polls.urls`` agregando las "
+"siguientes llamadas a :func:`~django.conf.urls.url`:"
 
 #: ../../intro/tutorial03.txt:225
 msgid ""
@@ -4453,6 +4546,10 @@ msgid ""
 "results/\" and \"/polls/34/vote/\" too -- these will display the placeholder "
 "results and voting pages."
 msgstr ""
+"Veamos en nuestro browser \"/polls/34/\". Se ejecutará la función "
+"``detail()`` y nos mostrará el ID que pasamos en la URL. Probemos también \"/"
+"polls/34/results/\" y \"/polls/34/vote/\" -- esto nos debería mostrar los "
+"placeholder que definimos para las páginas de resultados y para votar."
 
 #: ../../intro/tutorial03.txt:230
 msgid ""
@@ -4467,6 +4564,16 @@ msgid ""
 "include`, it chops off whatever part of the URL matched up to that point and "
 "sends the remaining string to the included URLconf for further processing."
 msgstr ""
+"Cuando alguien pide por una página de nuestro sitio -- supongamos \"/"
+"polls/34/\", Django va a cargar el módulo ``mysite.urls``, al que apunta el "
+"setting :setting:`ROOT_URLCONF`. Encuentra la variable ``urlpatterns`` y "
+"recorre las expresiones regulares en orden. Las llamadas a :func:`~django."
+"conf.urls.include` simplemente referencian otros URLconf. Notar que las "
+"expresiones regulares para los :func:`~django.conf.urls.include` no tienen "
+"un ``$`` (caracter que indica el fin de string en un patrón), sino que "
+"terminan en una barra. Cada vez que Django encuentra un :func:`~django.conf."
+"urls.include`, recorta la parte de la URL que coincide hasta ese punto y "
+"envía el string restante al URLconf relacionado para continuar el proceso."
 
 #: ../../intro/tutorial03.txt:242
 msgid ""
@@ -4475,14 +4582,19 @@ msgid ""
 "they can be placed under \"/polls/\", or under \"/fun_polls/\", or under \"/"
 "content/polls/\", or any other path root, and the app will still work."
 msgstr ""
+"La idea detrás de :func:`~django.conf.urls.include` es hacer fácil tener "
+"URLs plug-and-play. Como polls tiene su propio URLconf (``polls/urls.py``), "
+"las URLs de la app se pueden poner bajo \"/polls/\", o bajo \"/fun_polls/\", "
+"o bajo \"/content/polls/\", o cualquier otro camino, y la app seguirá "
+"funcionando."
 
 #: ../../intro/tutorial03.txt:248
 msgid "Here's what happens if a user goes to \"/polls/34/\" in this system:"
-msgstr ""
+msgstr "Esto es lo que pasa si un usuario va a \"/polls/34/\" en este sistema:"
 
 #: ../../intro/tutorial03.txt:250
 msgid "Django will find the match at ``'^polls/'``"
-msgstr ""
+msgstr "Django encontrará coincidencia en ``'^polls/'``"
 
 #: ../../intro/tutorial03.txt:252
 msgid ""
@@ -4491,6 +4603,10 @@ msgid ""
 "processing which matches ``r'^(?P<question_id>[0-9]+)/$'`` resulting in a "
 "call to the ``detail()`` view like so::"
 msgstr ""
+"Entonces, Django va a recortar el texto que coincide (``\"polls/\"``) y "
+"enviar el texto restante -- ``\"34/\"`` -- al URLconf 'polls.urls' para "
+"seguir el proceso, donde coincidirá con ``r'^(?P<question_id>[0-9]+)/$'``, "
+"resultando en una llamada a la view ``detail()`` de la forma::"
 
 #: ../../intro/tutorial03.txt:259
 msgid ""
@@ -4501,6 +4617,12 @@ msgid ""
 "``[0-9]+`` is a regular expression to match a sequence of digits (i.e., a "
 "number)."
 msgstr ""
+"La parte ``question_id='34'`` surge de ``(?P<question_id>[0-9]+)``. Usando "
+"paréntesis alrededor de un patrón se \"captura\" el texto que coincida con "
+"el patrón y ese valor se pasas como argumento a la función view; ``?"
+"P<question_id>`` define el nombre que se usará para identificar la "
+"coincidencia; y ``[0-9]+`` es una expresión regular para buscar una "
+"secuencia de dígitos (i.e., un número)."
 
 #: ../../intro/tutorial03.txt:265
 msgid ""
@@ -4509,14 +4631,18 @@ msgid ""
 "``.html`` -- unless you want to, in which case you can do something like "
 "this::"
 msgstr ""
+"Como los patrones de URL son expresiones regulares, no hay realmente un "
+"límite de lo que se puede hacer con ellos. Y no hay necesidad de agregar "
+"cosas como ``.html`` -- a menos que uno quisiera, en cuyo caso nos quedaría "
+"algo como::"
 
 #: ../../intro/tutorial03.txt:272
 msgid "But, don't do that. It's silly."
-msgstr ""
+msgstr "Pero no hagan esto. No tiene sentido."
 
 #: ../../intro/tutorial03.txt:275
 msgid "Write views that actually do something"
-msgstr ""
+msgstr "Escribiendo views que hacen algo"
 
 #: ../../intro/tutorial03.txt:277
 msgid ""
@@ -4525,6 +4651,10 @@ msgid ""
 "page, or raising an exception such as :exc:`~django.http.Http404`. The rest "
 "is up to you."
 msgstr ""
+"Cada view es responsable de hacer una de dos cosas: devolver un objeto :"
+"class:`~django.http.HttpResponse` con el contenido de la página solicitada, "
+"o levantar una excepción, por ejemplo :exc:`~django.http.Http404`. El resto "
+"depende de uno."
 
 #: ../../intro/tutorial03.txt:282
 msgid ""
@@ -4533,11 +4663,18 @@ msgid ""
 "not. It can generate a PDF file, output XML, create a ZIP file on the fly, "
 "anything you want, using whatever Python libraries you want."
 msgstr ""
+"Una view puede leer registros de una base de datos, o no. Puede usar un "
+"sistema de templates como el de Django -- o algún otro basado en Python --, "
+"o no. Puede generar un archivo PDF, una salida XML, crear un archivo ZIP, "
+"cualquier cosa que uno quiera, usando cualquier librería Python que uno "
+"quiera."
 
 #: ../../intro/tutorial03.txt:287
 msgid ""
 "All Django wants is that :class:`~django.http.HttpResponse`. Or an exception."
 msgstr ""
+"Todo lo que Django espera es un :class:`~django.http.HttpResponse`. O una "
+"excepción."
 
 #: ../../intro/tutorial03.txt:289
 msgid ""
@@ -4546,6 +4683,10 @@ msgid ""
 "``index()`` view, which displays the latest 5 poll questions in the system, "
 "separated by commas, according to publication date:"
 msgstr ""
+"Por ser conveniente, vamos a usar la API de Django para base de datos, que "
+"vimos en el :doc:`Tutorial 1 </intro/tutorial01>`. Aquí tenemos una "
+"aproximación a la view ``index()`` que muestra las 5 preguntas más recientes "
+"en el sistema, separadas por comas, de acuerdo a la fecha de publicación:"
 
 #: ../../intro/tutorial03.txt:309
 msgid ""
@@ -4554,12 +4695,19 @@ msgid ""
 "Python code. So let's use Django's template system to separate the design "
 "from Python by creating a template that the view can use."
 msgstr ""
+"Pero tenemos un problema: el diseño de la página está escrito explícitamente "
+"en la view. Si uno quisiera cambiar cómo se ve la página, debería editar el "
+"código Python. Entonces vamos a usar el sistema de templates de Django para "
+"separar el diseño del código Python, creando un template que la view pueda "
+"usar."
 
 #: ../../intro/tutorial03.txt:314
 msgid ""
 "First, create a directory called ``templates`` in your ``polls`` directory. "
 "Django will look for templates in there."
 msgstr ""
+"Primero, creamos un directorio llamado ``templates`` en nuestro directorio "
+"``polls``. Django va a buscar los templates allí."
 
 #: ../../intro/tutorial03.txt:317
 msgid ""
@@ -4572,10 +4720,19 @@ msgid ""
 "the :setting:`DIRS <TEMPLATES-DIRS>` option, as we did in :ref:`Tutorial 2 "
 "<ref-customizing-your-projects-templates>`."
 msgstr ""
+"El setting :setting:`TEMPLATES` de nuestro proyecto describe cómo Django va "
+"a cargar y renderizar templates. Por defecto se configura como backend "
+"``DjangoTemplates``, con la opción :setting:`APP_DIRS <TEMPLATES-APP_DIRS>` "
+"en True. Por convención ``DjangoTemplates`` busca por un subdirectorio "
+"\"templates\" en cada una de las aplicaciones en :setting:`INSTALLED_APPS`. "
+"Esta es la manera en que Django sabe encontrar los templates de nuestra "
+"aplicación polls sin tener que modificar la opción :setting:`DIRS <TEMPLATES-"
+"DIRS>`, como hicimos en :ref:`Tutorial 2 <ref-customizing-your-projects-"
+"templates>`."
 
 #: ../../intro/tutorial03.txt:325
 msgid "Organizing templates"
-msgstr ""
+msgstr "Organizando los templates"
 
 #: ../../intro/tutorial03.txt:327
 msgid ""
@@ -4587,6 +4744,13 @@ msgid ""
 "discuss in more detail in the :doc:`reusable apps tutorial </intro/reusable-"
 "apps>` *why* we do this."
 msgstr ""
+"*Podríamos* tener todos nuestros templates juntos, en un gran directorio "
+"templates y funcionaría perfectamente bien. Sin embargo, este template "
+"pertenece a la aplicación polls entonces, a diferencia del template del "
+"admin que creamos en la parte anterior, vamos a poner este en el directorio "
+"de templates de la aplicación (``polls/templates``) en lugar de aquel del "
+"proyecto (``templates``). Discutiremos más en detalle en :doc:`el tutorial "
+"de apps reusables </intro/reusable-apps>` el *por qué* de esto."
 
 #: ../../intro/tutorial03.txt:334
 msgid ""
@@ -4597,10 +4761,16 @@ msgid ""
 "as described above, you can refer to this template within Django simply as "
 "``polls/index.html``."
 msgstr ""
+"En el directorio ``templates`` que acabamos de crear, creamos otro "
+"directorio llamado ``polls``, y allí creamos un archivo ``index.html``. En "
+"otras palabras, nuestro template debería estar en ``polls/templates/polls/"
+"index.html``. Como la carga de templates basada en ``app_directories`` "
+"funciona como se describió arriba, nos podemos referir a este template en "
+"Django simplemente como ``polls/index.html``."
 
 #: ../../intro/tutorial03.txt:341
 msgid "Template namespacing"
-msgstr ""
+msgstr "Espacio de nombre en templates"
 
 #: ../../intro/tutorial03.txt:343
 msgid ""
@@ -4613,16 +4783,26 @@ msgid ""
 "way to ensure this is by *namespacing* them. That is, by putting those "
 "templates inside *another* directory named for the application itself."
 msgstr ""
+"Ahora *podríamos* continuar poniendo nuestros templates directamente en "
+"``polls/templates`` (en lugar de crear otro subdirectorio ``polls``), pero "
+"no sería una buena idea. Django elegirá el primer template que encuentre tal "
+"que el nombre coincida, y si tenemos un template con el mismo nombre en una "
+"aplicación *diferente*, Django no podrá distinguir entre ellos. Necesitamos "
+"apuntar a Django al correcto, y la forma más fácil de asegurarse de esto es "
+"usando *espacio de nombres* para ellos. Esto es, poner los templates dentro "
+"de *otro* directorio llamado como la aplicación correspondiente."
 
 #: ../../intro/tutorial03.txt:352
 msgid "Put the following code in that template:"
-msgstr ""
+msgstr "Pongamos el siguiente código en ese template:"
 
 #: ../../intro/tutorial03.txt:367
 msgid ""
 "Now let's update our ``index`` view in ``polls/views.py`` to use the "
 "template:"
 msgstr ""
+"Ahora actualicemos nuestra view ``index`` en ``polls/views.py`` para usar el "
+"template:"
 
 #: ../../intro/tutorial03.txt:386
 msgid ""
@@ -4630,6 +4810,9 @@ msgid ""
 "context. The context is a dictionary mapping template variable names to "
 "Python objects."
 msgstr ""
+"Ese código carga el template llamado ``polls/index.html`` y le pasa un "
+"contexto. El contexto es un diccionario que mapea nombres de variable a "
+"objetos Python."
 
 #: ../../intro/tutorial03.txt:390
 msgid ""
@@ -4637,10 +4820,13 @@ msgid ""
 "bulleted-list containing the \"What's up\" question from Tutorial 1. The "
 "link points to the question's detail page."
 msgstr ""
+"Carguemos la página apuntando el browser a \"/polls/\", y deberíamos ver una "
+"lista conteniendo la pregunta \"What's up\" del Tutorial 1. El link apunta a "
+"la página de detall de la pregunta."
 
 #: ../../intro/tutorial03.txt:395
 msgid "A shortcut: :func:`~django.shortcuts.render`"
-msgstr ""
+msgstr "Un atajo: :func:`~django.shortcuts.render`"
 
 #: ../../intro/tutorial03.txt:397
 msgid ""
@@ -4649,6 +4835,10 @@ msgid ""
 "template. Django provides a shortcut. Here's the full ``index()`` view, "
 "rewritten:"
 msgstr ""
+"La acción de cargar un template, armar un contexto y devolver un objeto :"
+"class:`~django.http.HttpResponse` con el resultado de renderizar el template "
+"es muy común. Django provee un atajo. Aquí está la view ``index()`` "
+"reescrita:"
 
 #: ../../intro/tutorial03.txt:415
 msgid ""
@@ -4658,6 +4848,11 @@ msgid ""
 "``HttpResponse`` if you still have the stub methods for ``detail``, "
 "``results``, and ``vote``)."
 msgstr ""
+"Una vez que hayamos hecho esto para todas estas views, ya no necesitamos "
+"importar :mod:`~django.template.loader`, :class:`~django.template."
+"RequestContext` y :class:`~django.http.HttpResponse` (habrá que mantener "
+"``HttpResponse``  si es que todavía tenemos métodos stub para ``detail``, "
+"``results`` y ``vote``)."
 
 #: ../../intro/tutorial03.txt:420
 msgid ""
@@ -4666,22 +4861,30 @@ msgid ""
 "as its optional third argument. It returns an :class:`~django.http."
 "HttpResponse` object of the given template rendered with the given context."
 msgstr ""
+"La función :func:`~django.shortcuts.render` toma un objeto ``request`` como "
+"primer un argumento, un nombre de template como segundo argumento y un "
+"diccionario como tercer argumento opcional. Devuelve un objeto :class:"
+"`~django.http.HttpResponse` con el template renderizado con el contexto dado."
 
 #: ../../intro/tutorial03.txt:426
 msgid "Raising a 404 error"
-msgstr ""
+msgstr "Levantando un error 404"
 
 #: ../../intro/tutorial03.txt:428
 msgid ""
 "Now, let's tackle the question detail view -- the page that displays the "
 "question text for a given poll. Here's the view:"
 msgstr ""
+"Ahora veamos la view de detalle de una pregunta -- la página que muestra el "
+"texto de la pregunta. Aquí está la view:"
 
 #: ../../intro/tutorial03.txt:446
 msgid ""
 "The new concept here: The view raises the :exc:`~django.http.Http404` "
 "exception if a question with the requested ID doesn't exist."
 msgstr ""
+"El nuevo concepto aquí: la view levanta una excepción :exc:`~django.http."
+"Http404` si no existe una pregunta con el ID dado."
 
 #: ../../intro/tutorial03.txt:449
 msgid ""
@@ -4689,14 +4892,17 @@ msgid ""
 "bit later, but if you'd like to quickly get the above example working, a "
 "file containing just:"
 msgstr ""
+"Veremos qué podríamos poner en el template ``polls/detail.html`` luego, pero "
+"si quisiéramos tener el ejemplo arriba funcionando rápidamente, esto alcanza "
+"para empezar:"
 
 #: ../../intro/tutorial03.txt:458
 msgid "will get you started for now."
-msgstr ""
+msgstr "para ponernos en marcha por ahora."
 
 #: ../../intro/tutorial03.txt:461
 msgid "A shortcut: :func:`~django.shortcuts.get_object_or_404`"
-msgstr ""
+msgstr "Un atajo: :func:`~django.shortcuts.get_object_or_404`"
 
 #: ../../intro/tutorial03.txt:463
 msgid ""
@@ -4704,6 +4910,9 @@ msgid ""
 "and raise :exc:`~django.http.Http404` if the object doesn't exist. Django "
 "provides a shortcut. Here's the ``detail()`` view, rewritten:"
 msgstr ""
+"Es muy común usar el método :meth:`~django.db.models.query.QuerySet.get` y "
+"levantar un :exc:`~django.http.Http404` si el objeto no existe. Django "
+"provee un atajo. Esta la view ``detail()``, actualizada:"
 
 #: ../../intro/tutorial03.txt:478
 msgid ""
@@ -4713,6 +4922,10 @@ msgid ""
 "of the model's manager. It raises :exc:`~django.http.Http404` if the object "
 "doesn't exist."
 msgstr ""
+"La función :func:`~django.shortcuts.get_object_or_404` toma un modelo Django "
+"como primer argumento y un número arbitrario de argumentos nombrados, que se "
+"pasan a la función :meth:`~django.db.models.query.QuerySet.get` del manager "
+"del modelo. Levanta un :exc:`~django.http.Http404` si el objeto no existe."
 
 #: ../../intro/tutorial03.txt:486
 msgid ""
@@ -4722,6 +4935,11 @@ msgid ""
 "raise :exc:`~django.http.Http404` instead of :exc:`~django.core.exceptions."
 "ObjectDoesNotExist`?"
 msgstr ""
+"Por qué usamos una función :func:`~django.shortcuts.get_object_or_404` en "
+"lugar de manejar automáticamente la excepción :exc:`~django.core.exceptions."
+"ObjectDoesNotExist` a un nivel más arriba, o hacer que la API a nivel modelo "
+"levante :exc:`~django.http.Http404` en lugar de :exc:`~django.core."
+"exceptions.ObjectDoesNotExist`?"
 
 #: ../../intro/tutorial03.txt:492
 msgid ""
@@ -4729,6 +4947,9 @@ msgid ""
 "foremost design goals of Django is to maintain loose coupling. Some "
 "controlled coupling is introduced in the :mod:`django.shortcuts` module."
 msgstr ""
+"Porque esto acoplaría la capa de modelos a la capa de views. Uno de los "
+"objetivos de diseño de Django es mantener bajo acoplamiento. Cierto "
+"acoplamiento controlado se introduce en el módulo :mod:`django.shortcuts`."
 
 #: ../../intro/tutorial03.txt:496
 msgid ""
@@ -4738,10 +4959,15 @@ msgid ""
 "models.query.QuerySet.get`. It raises :exc:`~django.http.Http404` if the "
 "list is empty."
 msgstr ""
+"Existe también una función :func:`~django.shortcuts.get_list_or_404`, que "
+"funciona como :func:`~django.shortcuts.get_object_or_404` -- excepto que "
+"usa :meth:`~django.db.models.query.QuerySet.filter` en lugar de :meth:"
+"`~django.db.models.query.QuerySet.get`. Levanta un :exc:`~django.http."
+"Http404` si la lista es vacía."
 
 #: ../../intro/tutorial03.txt:503
 msgid "Use the template system"
-msgstr ""
+msgstr "Usando el sistema de templates"
 
 #: ../../intro/tutorial03.txt:505
 msgid ""
@@ -4749,6 +4975,9 @@ msgid ""
 "variable ``question``, here's what the ``polls/detail.html`` template might "
 "look like:"
 msgstr ""
+"Volvamos a la view ``detail()`` de nuestra aplicación. Dada la variable de "
+"contexto ``question``, veamos como podría lucir el template ``polls/detail."
+"html``:"
 
 #: ../../intro/tutorial03.txt:519
 msgid ""
@@ -4758,6 +4987,11 @@ msgid ""
 "attribute lookup -- which works, in this case. If attribute lookup had "
 "failed, it would've tried a list-index lookup."
 msgstr ""
+"El sistema de templates usa sintaxis de punto para acceder a los atributos "
+"de variable. En el ejemplo de ``{{ question.question_text }}``, Django "
+"primero hace una búsqueda de diccionario sobre el objeto ``question``. Si "
+"eso falla, intenta una búsqueda de atributo -- que en este caso, funciona. "
+"Si hubiera fallado, se hubiera intentado una búsqueda por índice de lista."
 
 #: ../../intro/tutorial03.txt:525
 msgid ""
@@ -4766,22 +5000,30 @@ msgid ""
 "all()``, which returns an iterable of ``Choice`` objects and is suitable for "
 "use in the :ttag:`{% for %}<for>` tag."
 msgstr ""
+"Una llamada de método se da en el loop :ttag:`{% for %}<for>`: ``question."
+"choice_set.all`` se interpreta como el código Python ``question.choice_set."
+"all()``, que devuelve un iterable de objetos ``Choice`` y usable para el "
+"tag :ttag:`{% for %}<for>`."
 
 #: ../../intro/tutorial03.txt:530
 msgid ""
 "See the `template guide <https://docs.djangoproject.com/en/1.8/topics/"
 "templates>`_ for more about templates."
 msgstr ""
+"Para más detalles sobre templates, se puede ver `template guide <https://"
+"docs.djangoproject.com/en/1.8/topics/templates>`_."
 
 #: ../../intro/tutorial03.txt:533
 msgid "Removing hardcoded URLs in templates"
-msgstr ""
+msgstr "Borrando URLs escritas explícitamente en templates"
 
 #: ../../intro/tutorial03.txt:535
 msgid ""
 "Remember, when we wrote the link to a question in the ``polls/index.html`` "
 "template, the link was partially hardcoded like this:"
 msgstr ""
+"Recordemos que cuando escribimos el link a una encuesta en el template "
+"``polls/index.html``, el link estaba parcialmente escrito \"a mano\":"
 
 #: ../../intro/tutorial03.txt:542
 msgid ""
@@ -4792,6 +5034,11 @@ msgid ""
 "specific URL paths defined in your url configurations by using the ``{% url "
 "%}`` template tag:"
 msgstr ""
+"El problema con esto, es que es una aproximación muy acoplada que hace que "
+"sea un desafío cambiar las URLs en un proyecto con muchos templates. Sin "
+"embargo, como definimos el argumento ``name`` en las llamadas a :func:"
+"`~django.conf.urls.url` en el módulo ``polls.urls``, podemos eliminar la "
+"dependencia de URLs fijas usando el template tag ``{% url %}``:"
 
 #: ../../intro/tutorial03.txt:552
 msgid ""
@@ -4799,6 +5046,9 @@ msgid ""
 "``polls.urls`` module. You can see exactly where the URL name of 'detail' is "
 "defined below::"
 msgstr ""
+"La forma en que esto funciona es buscando la definición de la URL "
+"especificada en el módulo ``polls.urls``. Podemos ver dónde se define el "
+"nombre 'detail' de la URL aquí::"
 
 #: ../../intro/tutorial03.txt:561
 msgid ""
@@ -4806,10 +5056,13 @@ msgid ""
 "perhaps to something like ``polls/specifics/12/`` instead of doing it in the "
 "template (or templates) you would change it in ``polls/urls.py``::"
 msgstr ""
+"Si uno quisiera cambiar la URL de la view de detalle de pregunta a algo "
+"distinto, tal vez algo como ``polls/specifics/12/``, en lugar de hacerlo en "
+"el template (o templates), bastaría con cambiarlo en ``polls/urls.py``::"
 
 #: ../../intro/tutorial03.txt:571
 msgid "Namespacing URL names"
-msgstr ""
+msgstr "Espacio de nombres en URLs"
 
 #: ../../intro/tutorial03.txt:573
 msgid ""
@@ -4820,20 +5073,28 @@ msgid ""
 "one make it so that Django knows which app view to create for a url when "
 "using the ``{% url %}`` template tag?"
 msgstr ""
+"El proyecto de este tutorial tiene sólo una app, ``polls``. En proyectos "
+"Django reales, podría haber cinco, diez, veinte o más apps. Cómo Django "
+"distingue los nombres de las URLs entre todas las apps? Por ejemplo, la app "
+"``polls`` tiene una view ``detail``, y podría ser que otra app para un blog "
+"en el mismo proyecto también. Cómo hace Django para saber la view de qué app "
+"usar al resolver un template tag ``{% url %}``?"
 
 #: ../../intro/tutorial03.txt:580
 msgid ""
 "The answer is to add namespaces to your root URLconf. In the ``mysite/urls."
 "py`` file, go ahead and change it to include namespacing:"
 msgstr ""
+"La respuesta es agregar espacios de nombres al URLconf raíz. Cambiamos el "
+"archivo ``mysite/urls.py`` para incluir espacios de nombres:"
 
 #: ../../intro/tutorial03.txt:594
 msgid "Now change your ``polls/index.html`` template from:"
-msgstr ""
+msgstr "Ahora cambiamos el template ``polls/index.html`` de:"
 
 #: ../../intro/tutorial03.txt:601
 msgid "to point at the namespaced detail view:"
-msgstr ""
+msgstr "a que apunte a la view de detalle con el espacio de nombres:"
 
 #: ../../intro/tutorial03.txt:608
 msgid ""
@@ -4841,10 +5102,13 @@ msgid ""
 "tutorial </intro/tutorial04>` to learn about simple form processing and "
 "generic views."
 msgstr ""
+"Una vez que estés cómodo escribiendo views, podés pasar a la :doc:`parte 4 "
+"del tutorial</intro/tutorial04>` para aprender sobre procesamiento simple de "
+"forms y views genéricas."
 
 #: ../../intro/tutorial04.txt:3
 msgid "Writing your first Django app, part 4"
-msgstr ""
+msgstr "Escribiendo tu primera Django app, parte 4"
 
 #: ../../intro/tutorial04.txt:5
 msgid ""
